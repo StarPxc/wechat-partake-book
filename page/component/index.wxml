@@ -6,6 +6,32 @@
             </swiper-item>
         </block>
     </swiper>
+<!-- 首页选择按钮 -->
+<view  stytle=" overflow-x: hidden; overflow-y: auto;">
+<!-- 搜索框 -->
+  <view class="serach">
+    <view class="serach_view_show" bindtap="bindtap"> 搜索</view>
+  </view>
+  <!-- 选择按钮 -->
+  <view  class="item">
+
+    <view class="item_left" class="top_image"  bindtap="isShowToast">
+        <image src="/image/teachbook.png" class="image"/>
+        <view class="mark" ><text class="text">教材</text></view>
+    </view>
+    <view class="item_right" class="top_image" bindtap="isShowToast">
+        <image src="/image/find.png" class="image"/>
+        <view class="mark" ><text class="text-middle">发现</text></view>
+    </view>
+    <view class="item_right" class="top_image" bindtap="isShowToast">
+        <image src="/image/baby.png" class="image"/>
+        <view class="mark" ><text class="text">幼儿</text></view>
+    </view>
+</view>
+
+</view>
+ 
+    
     <view class="selected">
         <view class="select-title"><text>精选主题</text></view>
         <view class="select-top">
