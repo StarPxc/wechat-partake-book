@@ -10,36 +10,36 @@
       "page/component/list/list"
   ],
   "window": {
-    "navigationBarTextStyle": "#ffffff",
-    "navigationBarTitleText": "萤火虫图书",
-    "navigationBarBackgroundColor": "#A9A9A9",
-    "backgroundColor": "#eeeeee",
-    "enablePullDownRefresh": true
+     "backgroundTextStyle": "light",
+     "navigationBarBackgroundColor": "#fff",
+     "navigationBarTitleText": "萤火虫图书",
+     "navigationBarTextStyle": "black",
+     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color": "#ffffff",
-    "selectedColor": "#AB956D",
-    "borderStyle": "#ffffff",
-    "backgroundColor": "#ffffff",
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
     "list": [{
       "pagePath": "page/component/index",
-      "iconPath": "image/12.png",
-      "selectedIconPath": "image/11.png",
-      "text": "主页"
+      "iconPath": "image/home.png",
+      "selectedIconPath": "image/home_s.png",
+      "text": "首页"
     }, {
       "pagePath": "page/component/category/category",
-      "iconPath": "image/22.png",
-      "selectedIconPath": "image/21.png",
-      "text": "分类"
+      "iconPath": "image/bookshelf.png",
+      "selectedIconPath": "image/bookshelf_s.png",
+      "text": "书架"
     }, {
       "pagePath": "page/component/cart/cart",
-      "iconPath": "image/32.png",
-      "selectedIconPath": "image/31.png",
-      "text": "购物车"
+      "iconPath": "image/bookbag.png",
+      "selectedIconPath": "image/bookbag_s.png",
+      "text": "书包"
     }, {
       "pagePath": "page/component/user/user",
-      "iconPath": "image/42.png",
-      "selectedIconPath": "image/41.png",
+      "iconPath": "image/firefly.png",
+      "selectedIconPath": "image/firefly_s.png",
       "text": "我的"
     }]
   },
