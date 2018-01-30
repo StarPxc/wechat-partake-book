@@ -1,9 +1,9 @@
 Page({
   data: {
     imgUrls: [
-      '/image/b1.jpg',
-      '/image/b2.jpg',
-      '/image/b3.jpg'
+      '/image/books/book1.png',
+      '/image/books/book2.png',
+      '/image/books/book3.png'
     ],
     indicatorDots: false,
     autoplay: false,
