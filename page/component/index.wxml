@@ -9,9 +9,18 @@
 <!-- 首页选择按钮 -->
 <view  stytle=" overflow-x: hidden; overflow-y: auto;">
 <!-- 搜索框 -->
-  <view class="serach">
-    <view class="serach_view_show" bindtap="bindtap"> 搜索</view>
-  </view>
+              <view class="weui-search-bar">
+                <view class="weui-search-bar__form">
+                  <view class="weui-search-bar__box">
+                    <input type="text" class="weui-search-bar__input" value="{{inputVal}}"  bindinput="inputTyping" />
+                   
+                  </view>
+                
+                </view>
+                <view class="weui-search-bar__cancel-btn"  bindtap="hideInput" bindtap='search'>搜索</view>
+              </view>
+
+          
   <!-- 选择按钮 -->
   <view  class="item">
 
@@ -33,91 +42,85 @@
  
     
     <view class="selected">
-        <view class="select-title"><text>精选主题</text></view>
+        <view class="select-title"><text>幼儿精选</text></view>
         <view class="select-top">
             <view class="select-top-small">
                 <navigator url="list/list">
-                    <image src="/image/s1.png"></image>
+                    <image src="/image/index2.jpg"></image>
                 </navigator>
             </view>
             <view class="select-top-small">
                 <navigator url="list/list">
-                    <image src="/image/s2.png"></image>
+                    <image src="/image/index3.jpg"></image>
                 </navigator>
             </view>
         </view>
         <view class="select-bottom">
             <navigator url="list/list">
-                <image src="/image/s3.png"></image>
+                <image src="/image/index1.jpg"></image>
             </navigator>
         </view>
     </view>
     <view class="newest">
-        <view class="newest-title"><text>最近新品</text></view>
+        <view class="newest-title"><text>最近上架</text></view>
         <view class="newest-box">
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
+                    <image src="/image/new/1.jpg"></image>
+                    <view class="newest-text"><text>鱼王</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
+                    <image src="/image/new/2.jpg"></image>
+                    <view class="newest-text"><text>杀死一只知更鸟</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
+                    <image src="/image/new/3.jpg"></image>
+                    <view class="newest-text"><text>步履不停</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
+                    <image src="/image/new/4.jpg"></image>
+                    <view class="newest-text"><text>我的职业是小说家</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
+                    <image src="/image/new/5.jpg"></image>
+                    <view class="newest-text"><text>游隼</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
+                    <image src="/image/new/6.jpg"></image>
+                    <view class="newest-text"><text>芳华</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s4.png"></image>
-                    <view class="newest-text"><text>瓜子 100g</text></view>
-                    <view class="newest-text"><text>￥ 0.01</text></view>
+                    <image src="/image/new/7.jpg"></image>
+                    <view class="newest-text"><text>飞行家</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
             <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/s5.png"></image>
-                    <view class="newest-text"><text>芹菜 半斤</text></view>
-                    <view class="newest-text"><text>￥ 0.02</text></view>
+                    <image src="/image/new/8.jpg"></image>
+                    <view class="newest-text"><text>游戏人间</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
                 </navigator>
             </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s6.png"></image>
-                    <view class="newest-text"><text>素米 375g</text></view>
-                    <view class="newest-text"><text>￥ 0.03</text></view>
-                </navigator>
-            </view>
+       
         </view>
     </view>
 </view>
