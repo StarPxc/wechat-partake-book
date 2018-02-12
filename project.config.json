@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
-	"appid": "touristappid",
-	"projectname": "mall",
+	"appid": "wx3e09d2514a3f1cd5",
+	"projectname": "wechat-partake-book",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -23,19 +23,27 @@
           
   <!-- 选择按钮 -->
   <view  class="item">
-
+   
     <view class="item_left" class="top_image"  bindtap="isShowToast">
         <image src="/image/teachbook.png" class="image"/>
         <view class="mark" ><text class="text">教材</text></view>
     </view>
+    
     <view class="item_right" class="top_image" bindtap="isShowToast">
+        <navigator url='/page/menu/discover/discover'>
         <image src="/image/find.png" class="image"/>
-        <view class="mark" ><text class="text-middle">发现</text></view>
+        </navigator>
+        <view class="mark"><text class="text-middle">发现</text></view>
     </view>
+    
+    
     <view class="item_right" class="top_image" bindtap="isShowToast">
+        <navigator url='/page/menu/children/children'>
         <image src="/image/baby.png" class="image"/>
+         </navigator>
         <view class="mark" ><text class="text">幼儿</text></view>
     </view>
+   
 </view>
 
 </view>

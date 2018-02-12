@@ -1,5 +1,5 @@
 page {
-  background-color: #fbf9fe;
+  background-color: #fff;
   height: 100%;
 }
 .container {
@@ -177,7 +177,7 @@ checkbox, radio{
 .page {
     min-height: 100%;
     flex: 1;
-    background-color: #FBF9FE;
+    background-color: #fff;
     font-size: 16px;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
     overflow: hidden;
