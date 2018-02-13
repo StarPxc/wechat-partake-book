@@ -51,3 +51,111 @@
     </view>
   </block>
 </scroll-view>
+
+<!-- 展示 -->
+<scroll-view class="latest-item-container {{currentNavbar==1 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoadLatest">
+  <block wx:for="{{latest_list}}" wx:for-index="idx">
+    <view wx:if="{{idx%3===0}}" class="latest-item">
+      <image src="{{_api.HOST_WORK+latest_list[idx].pic.pid}}!app.c360.webp" class="latest-image"
+        data-row-id="{{latest_list[idx].row_id}}" bindtap="onItemClick"
+        style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;" mode="scaleToFill">
+      </image>
+      <image src="{{_api.HOST_WORK+latest_list[idx+1].pic.pid}}!app.c360.webp" class="latest-image"
+        data-row-id="{{latest_list[idx+1].row_id}}" bindtap="onItemClick"
+        style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;" mode="scaleToFill">
+      </image>
+      <image src="{{_api.HOST_WORK+latest_list[idx+2].pic.pid}}!app.c360.webp" class="latest-image"
+        data-row-id="{{latest_list[idx+2].row_id}}" bindtap="onItemClick"
+        style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;" mode="scaleToFill">
+      </image>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 共享 -->
+<scroll-view class="latest-item-container {{currentNavbar==2 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoadLatest">
+ 
+  <view class="selected">
+        <view class="select-title"><text>幼儿精选</text></view>
+        <view class="select-top">
+            <view class="select-top-small">
+                <navigator url="list/list">
+                    <image src="/image/index2.jpg"></image>
+                </navigator>
+            </view>
+            <view class="select-top-small">
+                <navigator url="list/list">
+                    <image src="/image/index3.jpg"></image>
+                </navigator>
+            </view>
+        </view>
+        <view class="select-bottom">
+            <navigator url="list/list">
+                <image src="/image/index1.jpg"></image>
+            </navigator>
+        </view>
+    </view>
+
+    <view class="newest">
+        <view class="newest-title"><text>最近上架</text></view>
+        <view class="newest-box">
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/1.jpg"></image>
+                    <view class="newest-text"><text>鱼王</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/2.jpg"></image>
+                    <view class="newest-text"><text>杀死一只知更鸟</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/3.jpg"></image>
+                    <view class="newest-text"><text>步履不停</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/4.jpg"></image>
+                    <view class="newest-text"><text>我的职业是小说家</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/5.jpg"></image>
+                    <view class="newest-text"><text>游隼</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/6.jpg"></image>
+                    <view class="newest-text"><text>芳华</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/7.jpg"></image>
+                    <view class="newest-text"><text>飞行家</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+            <view class="newest-list">
+                <navigator url="/page/component/details/details">
+                    <image src="/image/new/8.jpg"></image>
+                    <view class="newest-text"><text>游戏人间</text></view>
+                    <view class="newest-text"><text>AAA</text></view>
+                </navigator>
+            </view>
+       
+        </view>
+        </view>
+</scroll-view>
