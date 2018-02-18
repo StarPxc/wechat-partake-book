@@ -6,62 +6,22 @@ Page({
     nickname:'',
     orders:[],
     hasAddress:false,
-    address:{}
+    address:{},
+    user_token:"",
   },
   onLoad(){
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          console.log(res.code)
-          //发起网络请求
-          wx.request({
-            url: 'https://jihangyu.cn/user/login',
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data: {
-              code: res.code
-            },
-            method: "POST",
-            success(res) {
-              console.log(res.data)
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          })
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      }
-    });
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+    var that=this
+    var user_token = wx.getStorageSync("user_token")
+    if(user_token){
+      console.log("用户已登录")
+      that.setData({
+        user_token: user_token
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    }else{
+      console.log("正在登陆")
+      app.login(that)
     }
+   
 
 
 
@@ -93,8 +53,49 @@ Page({
       }
     })
   },
-
+  test(){
+    var that=this
+    wx.request({
+      url: 'https://jihangyu.cn/user/updateUser',
+      method: 'POST',
+      data: {
+        appointmentBId: "0",
+        ucity: "string",
+        uemail: "11",
+        ugender: "1",
+        unickname: "121",
+        uphone: "213",
+        uprovince: "sadfsa",
+        urole: "user",
+        uselfIntroduction:"asds"
+      },
+      header: {
+        'content-type': 'application/json',
+        'user-token': this.data.user_token
+      },
+      success: function (res) {
+       if(res.data.code==508){
+        //登陆状态过期
+         app.login(that)
+         wx.showModal({
+           title: '身份认证过期',
+           content: '是否重试',
+           success: function (res) {
+             if (res.confirm) {
+               that.test()
+             } else if (res.cancel) {
+               console.log('用户点击取消')
+             }
+           }
+         })
+       }else{
+         console.log(res.data.data)
+       }
+      }
+    })
+  },
   addBook:function(event){
+    var that=this;
     wx.request({
       url: 'https://jihangyu.cn/book/addBook',
       method:'POST',
@@ -106,19 +107,19 @@ Page({
         bisbn: "121",
         barcode: "213",
         bownerid: "",
-        buserid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        buserid: "666666",
         bstatus: "1",
         btype: "1"
       },
       header: {
         'content-type': 'application/json' ,
-        'user-token':'cba52e94877838bccd29cb47f160a299'
+        'user-token':this.data.user_token
       },
       success:function(res){
         if(res.data.code==200){
-          console.log(res)
+          console.log(res.data)
         }else{
-          console.log("failure")
+          console.log(res.data)
         }
       }
     })
@@ -157,14 +158,11 @@ Page({
 
   getBookById: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/book/getBookById/8',
+      url: 'https://jihangyu.cn/book/getBookById/19',
       method: 'GET',
-      header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
-      },
       success: function (res) {
         if (res.data.code == 200) {
-          console.log(res)
+          console.log(res.data)
         } else {
           console.log("failure")
         }
@@ -208,7 +206,7 @@ Page({
   
   deleteBookById: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/book/deleteBookById/9',
+      url: 'https://jihangyu.cn/book/deleteBookById/19',
       method: 'GET',
       header: {
         'user-token': 'cba52e94877838bccd29cb47f160a299'
@@ -217,7 +215,7 @@ Page({
         if (res.data.code == 200) {
           console.log(res)
         } else {
-          console.log("failure")
+          console.log(res.data)
         }
       }
     })
@@ -301,14 +299,15 @@ Page({
     })
   },
 
-  uploadBookImg: function (event) {
+  BookUpload: function (event) {
    wx.chooseImage({
      count:1,
      success: function(res) {
        var tempFilePaths = res.tempFilePaths
        console.log(tempFilePaths)
+       
        wx.uploadFile({
-         url: 'https://jihangyu.cn/book/uploadBookImg',
+         url: 'https://jihangyu.cn/book/upload',
          method: 'POST',
          filePath: tempFilePaths[0],
          name: 'files',
