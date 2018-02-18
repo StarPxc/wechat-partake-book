@@ -206,14 +206,14 @@ Page({
   
   deleteBookById: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/book/deleteBookById/19',
+      url: 'https://jihangyu.cn/book/deleteBookById/21',
       method: 'GET',
       header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
-          console.log(res)
+          console.log(res.data)
         } else {
           console.log(res.data)
         }
@@ -223,16 +223,16 @@ Page({
 
   findAllUsedBookByUid: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/ub/findAllUsedBookByUid/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
+      url: 'https://jihangyu.cn/ub/findAllUsedBookByUid/asdasd',
       method: 'GET',
       header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
-          console.log(res)
+          console.log(res.data)
         } else {
-          console.log("failure")
+          console.log(res.data)
         }
       }
     })
@@ -243,7 +243,7 @@ Page({
       url: 'https://jihangyu.cn/ub/findAllHadBookByUid/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
       method: 'GET',
       header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
