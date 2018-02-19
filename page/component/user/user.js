@@ -100,16 +100,16 @@ Page({
       url: 'https://jihangyu.cn/book/addBook',
       method:'POST',
       data:{
-        bname: "豆腐干反对",
-        bauthor: "jhy",
-        bpublisher: "11",
+        bname: "游戏人间",
+        bauthor: "甲乙丙",
+        bpublisher: "图书出版社",
         bprice: "20",
-        bisbn: "121",
-        barcode: "213",
-        bownerid: "",
-        buserid: "666666",
-        bstatus: "1",
-        btype: "1"
+        bisbn: "12352225874521",
+        barcode: "12561563123152323",
+        bownerid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        buserid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        bstatus: "0",
+        btype: "小说"
       },
       header: {
         'content-type': 'application/json' ,
@@ -310,9 +310,9 @@ Page({
          url: 'https://jihangyu.cn/book/upload',
          method: 'POST',
          filePath: tempFilePaths[0],
-         name: 'files',
+         name: 'file',
          formData: {
-           'id': 8
+           'id': 33
          },
          header: {
            'content-type': 'multipart/form-data',// 默认值
