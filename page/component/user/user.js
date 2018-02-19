@@ -300,33 +300,14 @@ Page({
   },
 
   BookUpload: function (event) {
+    var that=this
    wx.chooseImage({
-     count:1,
+     count:6,
      success: function(res) {
        var tempFilePaths = res.tempFilePaths
-       console.log(tempFilePaths)
-       
-       wx.uploadFile({
-         url: 'https://jihangyu.cn/book/upload',
-         method: 'POST',
-         filePath: tempFilePaths[0],
-         name: 'file',
-         formData: {
-           'id': 33
-         },
-         header: {
-           'content-type': 'multipart/form-data',// 默认值
-           'user-token': 'cba52e94877838bccd29cb47f160a299'
-         },
-         success: function (res) {
-            console.log("接口调用上传成功。")
-            console.log(res.data)
-         },
-         fail: function (res){
-           console.log("接口调用上传失败。")
-           console.log(res.data)
-         }
-       })
+
+       app.uploadImgs({ uploadUrl: "https://jihangyu.cn/book/upload", fileUrl:tempFilePaths,"id":'37'},that)
+
      },
    })
   },
