@@ -100,7 +100,7 @@ Page({
       url: 'https://jihangyu.cn/book/addBook',
       method:'POST',
       data:{
-        bname: "游戏人间",
+        bname: "三味书屋",
         bauthor: "甲乙丙",
         bpublisher: "图书出版社",
         bprice: "20",
@@ -306,10 +306,32 @@ Page({
      success: function(res) {
        var tempFilePaths = res.tempFilePaths
 
-       app.uploadImgs({ uploadUrl: "https://jihangyu.cn/book/upload", fileUrl:tempFilePaths,"id":'37'},that)
+       app.uploadImgs({ uploadUrl: "https://jihangyu.cn/book/upload", fileUrl:tempFilePaths,"id":'38'},that)
 
      },
    })
+  },
+
+  uploadCaImg: function(event){
+    var that=this
+    wx.chooseImage({
+      count:1,
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths
+        app.uploadCaImgs({ uploadUrl: "https://jihangyu.cn/img/uploadCaImg", fileUrl: tempFilePaths,"type":"index","text":"firstcommit"},that)
+      },
+    })
+  },
+
+  uploadAdImg: function (event) {
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        var tempFilePaths = res.tempFilePaths
+        app.uploadAdImgs({ uploadUrl: "https://jihangyu.cn/img/uploadAdImg", fileUrl: tempFilePaths, "size": "little", "text": "firstcommit" }, that)
+      },
+    })
   },
 
 

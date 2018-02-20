@@ -183,9 +183,19 @@
                                 <view  bindtap="returnBook" class='card-item-font'>/returnBook(通过)</view>
                             </view>
                       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                           <view class="weui-cell__bd weui-cell_primary">
-                                <view   bindtap="test" class='card-item-font'>test</view>
+
+                      <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="uploadCaImg" class='card-item-font'>/uploadCaImg(通过)</view>
                             </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                             <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="uploadAdImg" class='card-item-font'>/uploadAdImg(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+
+                          
 
                         
            
