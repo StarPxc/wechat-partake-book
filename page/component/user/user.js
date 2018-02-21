@@ -130,7 +130,7 @@ Page({
       url: 'https://jihangyu.cn/book/updateBook',
       method: 'POST',
       data: {
-        bid:"9",
+        bid:"37",
         bname: "是刚刚",
         bauthor: "jhy",
         bpublisher: "11",
@@ -144,7 +144,7 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -158,7 +158,7 @@ Page({
 
   getBookById: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/book/getBookById/19',
+      url: 'https://jihangyu.cn/book/getBookById/26',
       method: 'GET',
       success: function (res) {
         if (res.data.code == 200) {
@@ -175,7 +175,7 @@ Page({
       url: 'https://jihangyu.cn/book/getBookByType/1',
       method: 'GET',
       header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -192,7 +192,7 @@ Page({
       url: 'https://jihangyu.cn/book/getBookByName/是刚刚',
       method: 'GET',
       header: {
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -206,7 +206,7 @@ Page({
   
   deleteBookById: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/book/deleteBookById/21',
+      url: 'https://jihangyu.cn/book/deleteBookById/37',
       method: 'GET',
       header: {
         'user-token': this.data.user_token
@@ -265,13 +265,13 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
           console.log(res)
         } else {
-          console.log("failure")
+          console.log(res.data)
         }
       }
     })
@@ -287,13 +287,13 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        'user-token': 'cba52e94877838bccd29cb47f160a299'
+        'user-token': this.data.user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
           console.log(res)
         } else {
-          console.log("failure")
+          console.log(res.data)
         }
       }
     })
@@ -333,6 +333,128 @@ Page({
       },
     })
   },
+
+  getCaImg: function (event) {
+    wx.request({
+      url: 'https://jihangyu.cn/img/getCaImg/index',
+      method: 'GET',
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log("failure")
+        }
+      }
+    })
+  },
+  getAdImg: function (event) {
+    wx.request({
+      url: 'https://jihangyu.cn/img/getAdImg/little',
+      method: 'GET',
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log("failure")
+        }
+      }
+    })
+  },
+
+  sendMyRequest: function (event) {
+    var that = this;
+    wx.request({
+      url: 'https://jihangyu.cn/message/sendMyRequest',
+      method: 'POST',
+      data: {
+        fromuid:"oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        touid:"oOor05XvJvLYuqPtre_pDvjotfs4",
+        bid:"29",
+        letter:"hello",
+        pass:"0"
+      },
+      header: {
+        'content-type': 'application/json',
+        'user-token': this.data.user_token
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log(res.data)
+        }
+      }
+    })
+  },
+
+  getMyRequest: function (event) {
+    wx.request({
+      url: 'https://jihangyu.cn/message/getMyRequest/oOor05XvJvLYuqPtre_pDvjotfs4',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'user-token': this.data.user_token
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log(res.data)
+        }
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
+  },
+
+  sendMyReply: function (event) {
+    var that = this;
+    wx.request({
+      url: 'https://jihangyu.cn/message/sendMyReply',
+      method: 'POST',
+      data: {
+        fromuid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        touid: "oOor05XvJvLYuqPtre_pDvjotfs4",
+        bid: "29",
+        letter: "hello",
+        pass: "1"
+      },
+      header: {
+        'content-type': 'application/json',
+        'user-token': this.data.user_token
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log(res.data)
+        }
+      }
+    })
+  },
+
+  getMyReply: function (event) {
+    wx.request({
+      url: 'https://jihangyu.cn/message/getMyReply/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'user-token': this.data.user_token
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data)
+        } else {
+          console.log(res.data)
+        }
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
+  },
+
 
 
   /**

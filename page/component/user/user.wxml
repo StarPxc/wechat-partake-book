@@ -194,6 +194,38 @@
                             </view>
                             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getCaImg" class='card-item-font'>/getCaImg/{type}（通过）</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getAdImg" class='card-item-font'>/getAdImg/{size}（通过）</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="sendMyRequest" class='card-item-font'>/sendMyRequest(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                             <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getMyRequest" class='card-item-font'>/getMyRequest/{to_uid}</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="sendMyReply" class='card-item-font'>/sendMyReply</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                              <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getMyReply" class='card-item-font'>/getMyReply/{from_uid}(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                      
+
 
                           
 
