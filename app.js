@@ -1,5 +1,22 @@
 //app.js
 App({
+  data:{
+    user_token:"",
+    nickname:""
+  },
+  formatDate(timestamp){
+    var date = new Date(timestamp);
+    //年  
+    var Y = date.getFullYear();
+    //月  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日  
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    //时  
+    var h = date.getHours();
+    var startTime = Y + "年" + M + "月" + D + "日" + " " + h 
+    return startTime
+  },
   uploadImgs(data, that) {
     var self=this
     var i = data.i ? data.i : 0,//当前上传的哪张图片
@@ -54,33 +71,40 @@ App({
       }
     })
   },
-  login(that) {
+  login() {
+    
     var self = this
+   
     wx.login({
       success: function (res) {
-        console.log(res.code)
         if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://jihangyu.cn/user/login',
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data: {
-              code: res.code
-            },
-            method: "POST",
-            success(res) {
-              console.log(res.data)
-              wx.setStorageSync("user_token", res.data.data)
-              that.setData({
-                user_token: res.data.data
+          var code=res.code
+          wx.getUserInfo({
+            success: function (res) {
+              var nickName = res.userInfo.nickName
+              //发起网络请求
+              wx.request({
+                url: 'https://jihangyu.cn/user/login',
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data: {
+                  code: code,
+                  nickName: nickName
+                },
+                method: "POST",
+                success(res) {
+
+                  wx.setStorageSync("user_token", res.data.data)
+                  console.log("登录成功，保存用户信息")
+                },
+                fail: function (res) {
+                  console.log(res);
+                }
               })
-            },
-            fail: function (res) {
-              console.log(res);
             }
           })
+          
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
@@ -88,10 +112,19 @@ App({
     });
   },
   onLaunch: function () {
+
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    var user_token = wx.getStorageSync("user_token")
+    if (user_token) {
+      console.log("用户已登录")
+
+    } else {
+      console.log("正在登陆")
+      this.login()
+    }
   },
   getUserInfo: function (cb) {
     var that = this

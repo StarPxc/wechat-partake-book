@@ -1,15 +1,16 @@
 {
   "pages": [
-        "page/component/user/user",
+    "page/component/user/user",
     "page/component/index",
+    "page/activity/detail/children",
+    "page/menu/children/children",
     "page/component/category/category",
     "page/component/cart/cart",
-
+   
     "page/component/address/address",
     "page/component/orders/orders",
     "page/component/details/details",
     "page/component/list/list",
-    "page/menu/children/children",
     "page/menu/discover/discover"
   ],
   "window": {

@@ -1,31 +1,27 @@
 <view>
-  <image  src=""
-    style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px" mode="aspectFit">
-  </image>
+   <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" autoplay='{{autoplay}}'>
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
   <view class="work-header">
     <text>{{work.name}}</text>
     <view class="work-view">
-      <image src="../../images/eye.png" class="work-eye"></image>
+      <image src="/image/baby.png" class="work-eye"></image>
       {{work.num_view}} 浏览
     </view>
   </view>
-  <!-- <view class="work-category">
-    <text>{{work.category}}{{work.size_label?'/'+work.size_label:''}}{{work.times?'/'+work.times:''}}</text>
-  </view> -->
-  <!-- <view class="work-category">
-    <text wx:if="{{work.price==='0.00'}}">非卖品</text>
-    <view wx:else>价格  <text class="price-red">￥{{work.price}}</text></view>
-  </view> -->
-  <view class="work-category" wx:if="{{work.desc}}">
+  <view class="work-category" >
     <text class="work-desc-title">活动详情</text>
-    <text>{{work.desc}}</text>
+    <text>{{introduction}}</text>
   </view>
 
-  <!-- <view class="work-author">
-    <image src="{{_api.HOST_HEAD+owner.uid}}/{{owner.version}}/180" class="author-image"></image>
-    <view>
-      <view class="author-name">{{owner.uname}}</view>
-      <view class="author-misc">{{owner.num_work}}件作品 {{owner.num_followed}}位粉丝</view>
-    </view>
-  </view> -->
+  <view>
+    <button bindtap='join'>参加活动</button>
+  </view>
+  <modal hidden="{{hidden}}" title="输入手机号报名" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}">
+    <input placeholder='请输入手机号'  bindinput="phoneImput"></input>
+</modal>
 </view>
