@@ -52,7 +52,7 @@
     <view class="selected">
         <view class="select-title"><text>幼儿精选</text></view>
         <view class="select-top">
-            <view class="select-top-small">
+             <view class="select-top-small">
                 <navigator url="list/list">
                     <image src="/image/index2.jpg"></image>
                 </navigator>
@@ -61,7 +61,7 @@
                 <navigator url="list/list">
                     <image src="/image/index3.jpg"></image>
                 </navigator>
-            </view>
+            </view> 
         </view>
         <view class="select-bottom">
             <navigator url="list/list">
@@ -72,51 +72,18 @@
     <view class="newest">
         <view class="newest-title"><text>最近上架</text></view>
         <view class="newest-box">
-            <view class="newest-list">
+          <block wx:for="{{newest}}">
+          <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/new/1.jpg"></image>
-                    <view class="newest-text"><text>鱼王</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
+                    <image src="http://p4a0xyee4.bkt.clouddn.com/{{item.bImg}}"></image>
+                    <view class="newest-text"><text>{{item.bName}}</text></view>
+                    <view class="newest-text"><text>{{item.bAuthor}}</text></view>
                 </navigator>
             </view>
-            <view class="newest-list">
+        </block> 
+            <!-- <view class="newest-list">
                 <navigator url="details/details">
-                    <image src="/image/new/2.jpg"></image>
-                    <view class="newest-text"><text>杀死一只知更鸟</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/3.jpg"></image>
-                    <view class="newest-text"><text>步履不停</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/4.jpg"></image>
-                    <view class="newest-text"><text>我的职业是小说家</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/5.jpg"></image>
-                    <view class="newest-text"><text>游隼</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/6.jpg"></image>
-                    <view class="newest-text"><text>芳华</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/7.jpg"></image>
+                    <image src="http://p4a0xyee4.bkt.clouddn.com/FgwEpxtw-_88X7XGu50DSlwwhkk0"></image>
                     <view class="newest-text"><text>飞行家</text></view>
                     <view class="newest-text"><text>AAA</text></view>
                 </navigator>
@@ -127,7 +94,7 @@
                     <view class="newest-text"><text>游戏人间</text></view>
                     <view class="newest-text"><text>AAA</text></view>
                 </navigator>
-            </view>
+            </view> -->
        
         </view>
     </view>
