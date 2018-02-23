@@ -32,6 +32,7 @@ Page({
     skin: ''
   },
   onLoad(){
+
     var that=this
     wx.getUserInfo({
       success: function (res) {
@@ -40,18 +41,8 @@ Page({
         })
       }
     })
-    // console.log(that.data.skinList[1])
 
     var user_token = wx.getStorageSync("user_token")
-    if(user_token){
-      console.log("用户已登录")
-      that.setData({
-        user_token: user_token
-      })
-    }else{
-      console.log("正在登陆")
-      app.login(that)
-    }
    
   
   },
@@ -91,43 +82,26 @@ Page({
     })
   },
   test(){
+    var user_token = wx.getStorageSync("user_token")
     var that=this
     wx.request({
-      url: 'https://jihangyu.cn/user/updateUser',
-      method: 'POST',
-      data: {
-        appointmentBId: "0",
-        ucity: "string",
-        uemail: "11",
-        ugender: "1",
-        unickname: "121",
-        uphone: "213",
-        uprovince: "sadfsa",
-        urole: "user",
-        uselfIntroduction:"asds"
-      },
+      url: 'https://jihangyu.cn/message/getMyReply/oOor05XvJvLYuqPtre_pDvjotfs4',
+      method: 'get',
+      // data: {
+      //   fromUid:"oOor05XvJvLYuqPtre_pDvjotfs4",
+      //   toUid:"oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+       
+      //   bid:26,
+      //   letter:'test',
+      //   pass:'0'
+
+      // },
       header: {
         'content-type': 'application/json',
-        'user-token': this.data.user_token
+        'user-token': user_token
       },
       success: function (res) {
-       if(res.data.code==508){
-        //登陆状态过期
-         app.login(that)
-         wx.showModal({
-           title: '身份认证过期',
-           content: '是否重试',
-           success: function (res) {
-             if (res.confirm) {
-               that.test()
-             } else if (res.cancel) {
-               console.log('用户点击取消')
-             }
-           }
-         })
-       }else{
-         console.log(res.data.data)
-       }
+        console.log(res.data)
       }
     })
   },

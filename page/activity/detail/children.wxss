@@ -1,11 +1,15 @@
 /* page/activity/detail/children.wxss */
-
+@import '/page/common/common.wxss';
 .work-header {
     display: flex;
     padding: 15px 15px;
     font-size: 18px;
     font-weight: bold;
     justify-content: space-between;
+}
+
+.slide-image{
+
 }
 .work-view {
     font-size: 12px;

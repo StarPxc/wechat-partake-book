@@ -10,11 +10,43 @@ Page({
     list: [],
     hot_last_id: 0,
     latest_list: [],
-    latest_last_id: 0
+    latest_last_id: 0,
+    activityList:[]
   },
 
   onLoad() {
-    var that = this
+    var that=this
+    wx.request({
+      url: 'https://jihangyu.cn/activity/findActiviysByState/1',//所有未开始的活动
+      success(res) {
+        if (res.data.code == 200) {
+          var activityList=[]
+          for(var i=0;i<res.data.data.length;i++){
+            var imgurls = res.data.data[i].aImgs.split(",");
+            imgurls.pop()
+            for (var j = 0; j < imgurls.length; j++) {
+              imgurls[j] = 'https://p4a0xyee4.bkt.clouddn.com/' + imgurls[j]
+            }
+     
+            var startTime = app.formatDate(res.data.data[i].aStartTime)+'时正式开始'
+            var aId = res.data.data[i].aId
+            var activity = { "introduction": res.data.data[i].aIntroduction, "imgUrls": imgurls, "title": res.data.data[i].aTitle, "startTime": startTime,"aId":aId}
+             activityList.push(activity)
+      
+          }
+           that.setData({
+             activityList: activityList
+           })
+         
+     
+        }
+
+      },
+      fail() {
+        console.log("获取失败")
+      }
+    })
+    
     app.getSystemInfo(function (res) {
       that.setData({
         systemInfo: res

@@ -2,6 +2,8 @@
   "pages": [
     "page/component/user/user",
     "page/component/index",
+    "page/activity/detail/children",
+    "page/menu/children/children",
     "page/component/category/category",
     "page/component/cart/cart",
     "page/component/address/address",
@@ -11,6 +13,7 @@
     "page/menu/children/children",
     "page/menu/discover/discover",
     "page/component/skin/skin"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
