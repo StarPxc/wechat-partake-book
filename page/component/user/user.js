@@ -2,15 +2,46 @@
 const app = getApp()
 Page({
   data:{
-    thumb:'',
-    nickname:'',
     orders:[],
     hasAddress:false,
     address:{},
     user_token:"",
+    userInfo:[],
+    gridList: [
+      { enName: 'favorite', zhName: '关于' },
+      { enName: 'history', zhName: '更新日志' },
+      { enName: 'shake', zhName: '反馈' },
+      { enName: 'gallery', zhName: '个人信息' },
+      { enName: 'gallery', zhName: '请求' },
+      { enName: 'setting', zhName: '回复' }
+    ],
+    skinList: [
+      { title: '公路', imgUrl: '/image/userbg/user_bg_1.jpg' },
+      { title: '黑夜森林', imgUrl:  '/image/userbg/user_bg_2.jpg' },
+      { title: '鱼与水', imgUrl:  '/image/userbg/user_bg_3.jpg' },
+      { title: '山之剪影', imgUrl: '/image/userbg/user_bg_4.jpg' },
+      { title: '火山', imgUrl: '/image/userbg/user_bg_5.jpg' },
+      { title: '科技', imgUrl:  '/image/userbg/user_bg_6.jpg' },
+      { title: '沙漠', imgUrl:  '/image/userbg/user_bg_7.jpg' },
+      { title: '叶子', imgUrl:  '/image/userbg/user_bg_8.jpg' },
+      { title: '早餐', imgUrl:  '/image/userbg/user_bg_9.jpg' },
+      { title: '英伦骑车', imgUrl: '/image/userbg/user_bg_10.jpg' },
+      { title: '草原', imgUrl:  '/image/userbg/user_bg_11.jpg' },
+      { title: '城市', imgUrl:  '/image/userbg/user_bg_12.jpg' }
+    ],
+    skin: ''
   },
   onLoad(){
     var that=this
+    wx.getUserInfo({
+      success: function (res) {
+        that.setData({
+          userInfo:res.userInfo
+        })
+      }
+    })
+    // console.log(that.data.skinList[1])
+
     var user_token = wx.getStorageSync("user_token")
     if(user_token){
       console.log("用户已登录")
@@ -22,23 +53,10 @@ Page({
       app.login(that)
     }
    
-
-
-
-    var self = this;
-    /**
-     * 获取用户信息
-     */
-    wx.getUserInfo({
-      success: function(res){
-        self.setData({
-          thumb: res.userInfo.avatarUrl,
-          nickname: res.userInfo.nickName
-        })
-      }
-    })
+  
   },
-  onShow(){
+  onShow(){ 
+
     var self = this;
     /**
      * 获取本地缓存 地址信息
@@ -48,9 +66,28 @@ Page({
       success: function(res){
         self.setData({
           hasAddress: true,
-          address: res.data
+          address: res.data,
         })
       }
+    }),
+      wx.getStorage({
+        key: 'skin',
+        success: function (res) {
+          if (res.data == "") {
+            self.setData({
+              skin: "/image/userbg/user_bg_4.jpg"
+            })
+          } else {
+            self.setData({
+              skin: res.data
+            })
+          }
+        }
+      })
+  },
+  viewSkin: function () {
+    wx.navigateTo({
+      url: "../skin/skin"
     })
   },
   test(){
@@ -389,7 +426,7 @@ Page({
 
   getMyRequest: function (event) {
     wx.request({
-      url: 'https://jihangyu.cn/message/getMyRequest/oOor05XvJvLYuqPtre_pDvjotfs4',
+      url: 'https://jihangyu.cn/message/getMyRequest/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
       method: 'GET',
       header: {
         'content-type': 'application/json',
@@ -414,11 +451,12 @@ Page({
       url: 'https://jihangyu.cn/message/sendMyReply',
       method: 'POST',
       data: {
-        fromuid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
-        touid: "oOor05XvJvLYuqPtre_pDvjotfs4",
-        bid: "29",
-        letter: "hello",
-        pass: "1"
+        id:6,
+        fromuid: "oOor05XvJvLYuqPtre_pDvjotfs4",
+        touid: "oOor05dnQyVDzvRSIKsT-EzRTYgQ",
+        bid: 26,
+        letter: "test",
+        pass: "2"
       },
       header: {
         'content-type': 'application/json',
