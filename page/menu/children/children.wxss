@@ -1,5 +1,23 @@
 /* page/menu/children/children.wxss */
 /**index.wxss**/
+.myblock{
+  margin-left: 30rpx;
+}
+.hr{
+  width: 90%;
+  height: 15rpx;
+  border-style:solid;
+  border-width:1px;
+  border-color: #ccc;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin:  0 auto;
+}
+.myInfo{
+  margin-top: 500rpx;
+  margin-bottom: 15rpx;
+}
 .navbar {
     display: flex;
     border-bottom: 1px solid #eee;
@@ -45,7 +63,17 @@
 .image-container {
     position: relative;
 }
-
+.work-category {
+    font-size: 13px;
+    padding: 0 15px 10px;
+    line-height: 18px;
+}
+.work-desc-title {
+  font-size: 12px;
+  color: #999;
+  padding: 5px 0 10px;
+  display: block;
+}
 .item-mask {
     position: absolute;
     left: 0px;
@@ -136,6 +164,7 @@ swiper-item image {
     height: 40rpx;
     color: #AB956D;
     text-align: center;
+    
 }
 .select-top-small{
     width: 375rpx;

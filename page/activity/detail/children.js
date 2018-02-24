@@ -110,7 +110,7 @@ Page({
           var imgurls = res.data.data.aImgs.split(",");
           imgurls.pop()
           for(var i=0;i<imgurls.length;i++){
-            imgurls[i] = 'https://p4a0xyee4.bkt.clouddn.com/' +imgurls[i]
+            imgurls[i] = 'http://p4a0xyee4.bkt.clouddn.com/' +imgurls[i]
           }
           that.setData({
             introduction: res.data.data.aIntroduction,

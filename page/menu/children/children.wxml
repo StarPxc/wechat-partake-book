@@ -7,21 +7,13 @@
 
 <!-- 轮播 -->
 <scroll-view class="hot-item-container {{currentNavbar==0 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoad">
-  <swiper indicator-dots="true" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
-    <block wx:for="{{swipers}}">
-      <swiper-item>
-        <image src="{{item.pic}}" class="slide-image" width="750" />
-      </swiper-item>
-    </block>
-  </swiper>
-
   <view class="line-text">
     精选活动
   </view>
   <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
     <block wx:for="{{activityList}}">
       <swiper-item>
-        <navigator  url='../../activity/detail/children?activityId={{item.aId}}' hover-class="navigator-hover">
+        <navigator url='../../activity/detail/children?activityId={{item.aId}}' hover-class="navigator-hover">
           <view class="hot-item">
             <view class="image-container" data-row-id="{{item.row_id}}" bindtap="onItemClick">
               <image src="{{item.imgUrls[0]}}" mode="scaleToFill" class="hot-image" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth}}px">
@@ -38,23 +30,82 @@
 
     </block>
   </swiper>
-
+  <!--推荐书籍  -->
+  <view class="line-text">
+    推荐书籍
+  </view>
+  <view class="newest">
+    <view class="newest-title">
+      <text>推荐书籍</text>
+    </view>
+    <view class="newest-box">
+      <block wx:for="{{recommondList}}" wx:key="{{index}}" >
+        <view class="newest-list">
+          <navigator url="/page/component/details/details?bId={{item.bId}}">
+            <image src="{{item.bImg}}"></image>
+            <view class="newest-text">
+              <text>{{item.bName}}</text>
+            </view>
+            <view class="newest-text">
+              <text>{{item.bAuthor}}</text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </view>
+  </view>
 </scroll-view>
 
 <!-- 展示 -->
 <scroll-view class="latest-item-container {{currentNavbar==1 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoadLatest">
-  <block wx:for="{{latest_list}}" wx:for-index="idx">
-    <view wx:if="{{idx%3===0}}" class="latest-item">
-      <image src="{{_api.HOST_WORK+latest_list[idx].pic.pid}}!app.c360.webp" class="latest-image" data-row-id="{{latest_list[idx].row_id}}" bindtap="onItemClick" style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;" mode="scaleToFill">
-      </image>
-      <image src="{{_api.HOST_WORK+latest_list[idx+1].pic.pid}}!app.c360.webp" class="latest-image" data-row-id="{{latest_list[idx+1].row_id}}" bindtap="onItemClick" style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;"
-        mode="scaleToFill">
-      </image>
-      <image src="{{_api.HOST_WORK+latest_list[idx+2].pic.pid}}!app.c360.webp" class="latest-image" data-row-id="{{latest_list[idx+2].row_id}}" bindtap="onItemClick" style="width:{{(systemInfo.windowWidth-2)/3}}px;height:{{(systemInfo.windowWidth-2)/3}}px;"
-        mode="scaleToFill">
-      </image>
+  <block wx:for="{{activityEndList}}" wx:key="{{index}}">
+    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+
+      <block wx:for="{{item.imgUrls}}" wx:key="{{index}}">
+        <swiper-item class="myblock">
+          <image src="{{item}}" mode="scaleToFill" class="hot-image" style="width:{{systemInfo.windowWidth-30}}px;height:{{systemInfo.windowWidth-30}}px;">
+          </image>
+        </swiper-item>
+      </block>
+
+    </swiper>
+    <view class="work-category">
+      <text class="work-desc-title">活动名称</text>
+      <text>{{item.title}}</text>
     </view>
+    <view class="work-category">
+      <text class="work-desc-title">活动详情</text>
+      <text>{{item.introduction}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">活动地点</text>
+      <text>{{item.address}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">开始时间</text>
+      <text>{{item.startTime}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">结束时间</text>
+      <text>{{item.endTime}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">举办方</text>
+      <text>{{item.sponsor}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">报名人数</text>
+      <text>{{item.totalPeopleNumber}}</text>
+    </view>
+    <view class="work-category">
+      <text class="work-desc-title">活动总结</text>
+      <text>{{item.summary}}</text>
+    </view>
+    <view class='hr'></view>
   </block>
+
+
+
 </scroll-view>
 
 <!-- 共享 -->

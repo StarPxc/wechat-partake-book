@@ -1,17 +1,16 @@
 {
   "pages": [
 
-      "page/menu/children/children",
-      "page/component/user/user",
-    "page/component/index",
+      "page/component/index",
+    "page/component/details/details",
+        "page/menu/children/children",
+    "page/component/user/user",
+  
     "page/activity/detail/children",
- 
     "page/component/category/category",
     "page/component/cart/cart",
-   
     "page/component/address/address",
     "page/component/orders/orders",
-    "page/component/details/details",
     "page/component/list/list",
     "page/menu/discover/discover"
   ],

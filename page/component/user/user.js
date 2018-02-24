@@ -14,8 +14,6 @@ Page({
     var user_token = wx.getStorageSync("user_token")
    
 
-
-
     var self = this;
     /**
      * 获取用户信息

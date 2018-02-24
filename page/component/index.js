@@ -9,33 +9,36 @@ Page({
     autoplay: false,
     interval: 3000,
     duration: 800,
-    newest:[],
+    newest: [],
+    lastedList: [],
   },
-  onLoad(){
-    var that=this
+  onLoad() {
+    var that = this
+
+    //获取最新的书籍
     wx.request({
-      url: 'https://jihangyu.cn/book/getBookByType/小说',
-      method: 'GET',
-      success:function(res){
+      url: 'https://jihangyu.cn/book/getBookByTag/lasted',
+      success(res) {
         if (res.data.code == 200) {
-          //单张图片的话，直接替换掉字符串中的,
-          var after_filt_data=res.data.data
-          // console.log(after_filt_data)
-          for (var i = 0; i < res.data.data.length;i++){
-            after_filt_data[i]["bImg"]=after_filt_data[i]["bImg"].replace(",","")
-            // console.log(after_filt_data[i]["bImg"].replace(",", ""))
+
+          var lastedList = res.data.data
+          for (var i = 0; i < lastedList.length; i++) {
+            lastedList[i].bImg = 'http://p4a0xyee4.bkt.clouddn.com/' + lastedList[i].bImg.split(",")[0]
           }
+          console.log(lastedList)
           that.setData({
-            newest: after_filt_data
+            lastedList: lastedList
           })
-          console.log(that.data.newest)
         } else {
-          console.log("failure")
+          wx.showToast({
+            title: res.data.msg,
+          })
         }
       }
     })
+
   }
 
 
-  
+
 })

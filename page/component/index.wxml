@@ -71,31 +71,20 @@
     </view>
     <view class="newest">
         <view class="newest-title"><text>最近上架</text></view>
-        <view class="newest-box">
-          <block wx:for="{{newest}}">
-          <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="http://p4a0xyee4.bkt.clouddn.com/{{item.bImg}}"></image>
-                    <view class="newest-text"><text>{{item.bName}}</text></view>
-                    <view class="newest-text"><text>{{item.bAuthor}}</text></view>
-                </navigator>
+         <view class="newest-box">
+      <block wx:for="{{lastedList}}" wx:key="{{index}}" >
+        <view class="newest-list">
+          <navigator url="/page/component/details/details?bId={{item.bId}}">
+            <image src="{{item.bImg}}"></image>
+            <view class="newest-text">
+              <text>{{item.bName}}</text>
             </view>
-        </block> 
-            <!-- <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="http://p4a0xyee4.bkt.clouddn.com/FgwEpxtw-_88X7XGu50DSlwwhkk0"></image>
-                    <view class="newest-text"><text>飞行家</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
+            <view class="newest-text">
+              <text>{{item.bAuthor}}</text>
             </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/new/8.jpg"></image>
-                    <view class="newest-text"><text>游戏人间</text></view>
-                    <view class="newest-text"><text>AAA</text></view>
-                </navigator>
-            </view> -->
-       
+          </navigator>
         </view>
+      </block>
+    </view>
     </view>
 </view>
