@@ -2,17 +2,17 @@
    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" autoplay='{{autoplay}}'>
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
             <swiper-item>
-                <image src="{{item}}" class="slide-image" width="100%"/>
+                <image src="{{item}}" class="slide-image"style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth}}px"/>
             </swiper-item>
         </block>
     </swiper>
-  <view class="work-header">
+  <!-- <view class="work-header">
     <text>{{work.name}}</text>
     <view class="work-view">
       <image src="/image/baby.png" class="work-eye"></image>
       {{work.num_view}} 浏览
     </view>
-  </view>
+  </view> -->
   <view class="work-category" >
     <text class="work-desc-title">活动详情</text>
     <text>{{introduction}}</text>

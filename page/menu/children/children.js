@@ -25,9 +25,9 @@ Page({
             var imgurls = res.data.data[i].aImgs.split(",");
             imgurls.pop()
             for (var j = 0; j < imgurls.length; j++) {
-              imgurls[j] = 'https://p4a0xyee4.bkt.clouddn.com/' + imgurls[j]
+              imgurls[j] = 'http://p4a0xyee4.bkt.clouddn.com/' + imgurls[j]
             }
-     
+            console.log(imgurls)
             var startTime = app.formatDate(res.data.data[i].aStartTime)+'时正式开始'
             var aId = res.data.data[i].aId
             var activity = { "introduction": res.data.data[i].aIntroduction, "imgUrls": imgurls, "title": res.data.data[i].aTitle, "startTime": startTime,"aId":aId}
@@ -53,37 +53,11 @@ Page({
       })
     })
 
-    that.setData({
-      _api: api
-    })
 
-    this.getSwipers()
-    this.pullUpLoad()
   },
 
-  /**
-   *
-   */
-  getSwipers() {
-    api.get(api.SWIPERS)
-      .then(res => {
-        this.setData({
-          swipers: res.data.ads
-        })
-      })
-  },
 
-  /**
-   * 点击跳转详情页
-   */
-  onItemClick(e) {
-    var targetUrl = api.ACTI_DETAIL
-    if (e.currentTarget.dataset.rowId != null)
-      targetUrl = targetUrl +'children'+ '?rowId=' + e.currentTarget.dataset.rowId
-    wx.navigateTo({
-      url: targetUrl
-    })
-  },
+
 
   /**
    * 切换 navbar
@@ -122,21 +96,8 @@ Page({
     }
   },
 
-  /**
-   * [推荐]上拉刷新
-   */
-  pullUpLoad() {
-    wx.showNavigationBarLoading()
-    api.get(api.HOST_IOS + api.HOT + '?last_id=' + this.data.hot_last_id)
-      .then(res => {
-        this.setData({
-          list: this.data.list.concat(res.data.list),
-          hot_last_id: res.data.last_id
-        })
-        wx.hideNavigationBarLoading()
-        wx.stopPullDownRefresh()
-      })
-  },
+ 
+
 
   /**
    * [最新]上拉刷新
