@@ -72,7 +72,7 @@ App({
     })
   },
   login() {
-    
+  
     var self = this
    
     wx.login({
@@ -94,9 +94,15 @@ App({
                 },
                 method: "POST",
                 success(res) {
-
-                  wx.setStorageSync("user_token", res.data.data)
-                  console.log("登录成功，保存用户信息")
+                  if(res.data.code==200){
+                    wx.showToast({
+                      title: '登录成功',
+                    })
+                    wx.setStorageSync("user_token", res.data.data)
+                    console.log("登录成功，保存用户信息")
+                  }
+                  
+                 
                 },
                 fail: function (res) {
                   console.log(res);

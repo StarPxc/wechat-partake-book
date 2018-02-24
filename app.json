@@ -1,7 +1,8 @@
 {
   "pages": [
+
       "page/menu/children/children",
-    "page/component/user/user",
+      "page/component/user/user",
     "page/component/index",
     "page/activity/detail/children",
  

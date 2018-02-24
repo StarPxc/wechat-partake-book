@@ -69,6 +69,7 @@ Page({
     })
   },
   addBook:function(event){
+    var user_token = wx.getStorageSync("user_token")
     var that=this;
     wx.request({
       url: 'https://jihangyu.cn/book/addBook',
@@ -87,7 +88,7 @@ Page({
       },
       header: {
         'content-type': 'application/json' ,
-        'user-token':this.data.user_token
+        'user-token': user_token
       },
       success:function(res){
         if(res.data.code==200){
