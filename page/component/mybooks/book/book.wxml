@@ -1,0 +1,43 @@
+<!--page/component/mybooks/book/book.wxml-->
+
+<view class='logo' style='margin-bottom:20px'>
+  <image class='logo' src='http://p4a0xyee4.bkt.clouddn.com/{{book.bImg}}'></image>
+</view>
+
+<!-- <view class='top'>书中自有颜如玉。</view> -->
+
+<view class="weui-panel">
+            <view class="weui-panel__hd">{{book.bType}}</view>
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{book.bName}}</view>
+                    <!-- <view class="weui-panel__hd" style='font-size:30rpx'>{{book.book_outline}}</view> -->
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta">{{book.bAuthor}} 著</view>
+                         <view class="weui-media-box__info__meta">ISBN:{{book.bIsbn}}</view> 
+                         <view class="weui-media-box__info__meta">￥{{book.bPrice}}</view> 
+   
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 借阅相关信息 -->
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">拥有者</view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">昵称：{{owner.uNickname}}</view>
+                    <view class="weui-media-box__desc">邮箱：{{owner.uEmail}}</view>
+                    <view class="weui-media-box__desc">自我介绍：{{owner.uSelfIntroduction}}</view>
+                </view>
+        </view>
+
+                <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">当前使用者</view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">昵称：{{user.uNickname}}</view>
+                    <view class="weui-media-box__desc">邮箱：{{user.uEmail}}</view>
+                    <view class="weui-media-box__desc">自我介绍：{{user.uSelfIntroduction}}</view>
+                </view>
+        </view>
+

@@ -1,0 +1,22 @@
+<!--pages/core/person/about/about.wxml-->
+<view class='contant'>
+  <view class='logo' style='margin-bottom:20px'>
+   <image class='logo' src='/image/logo.png'></image>
+  </view>
+  <view class='edition'>「萤火虫共享图书」1.0</view>
+
+  <!-- <view style='width:80rpx;background-color: #f8f8f8'></view> -->
+
+  <!-- <view class='top'>「萤火虫共享图书 1.0」小程序</view> -->
+  <!-- <view class='text_title'>数据源：</view>
+  <view class='text'>通过爬虫抓取教务网数据，遵循Robots协议，承诺保护用户隐私。</view>
+  <view class='text_title'>公众号：</view>
+  <image class='public' src='../../../../images/public.jpg'></image>
+  <view class='public_text'>果核里的图灵</view>
+  <view class='text_title'>官方网站：</view>
+  <view class='text'>www.guohe3.com</view>
+   <view class="weui-footer__text">Copyright © 2017-2018 guohe3.com</view>
+   -->
+
+  
+</view>

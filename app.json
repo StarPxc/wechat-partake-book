@@ -1,18 +1,24 @@
 {
   "pages": [
 
-      "page/component/index",
+    "page/component/index",
     "page/component/details/details",
-        "page/menu/children/children",
-    "page/component/user/user",
-  
-    "page/activity/detail/children",
+    "page/menu/children/children",
+    "page/component/user/user",  
     "page/component/category/category",
     "page/component/cart/cart",
     "page/component/address/address",
     "page/component/orders/orders",
     "page/component/list/list",
-    "page/menu/discover/discover"
+    "page/menu/children/children",
+    "page/menu/discover/discover",
+    "page/component/skin/skin",
+    "page/component/feedback/feedback",
+    "page/component/about/about",
+    "page/component/myinfo/myinfo",
+    "page/component/mybooks/mybooks",
+    "page/component/mybooks/book/book"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

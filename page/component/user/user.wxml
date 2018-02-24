@@ -1,120 +1,26 @@
 <view class="main">
- 
-    <view class='contant'>
-  <view class='user-info' style='margin-bottom:20px'>
-    <image class="userinfo-avatar" src="{{thumb}}" background-size="cover"></image>
-    <view class="userinfo-username">{{nickname}}</view>
-  </view>
-  <view class='card'>
-         <view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
-            <view class="weui-panel__hd" style='font-size:30rpx'>设置</view>
-            <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_small-appmsg">
-                    <view class="weui-cells weui-cells_in-small-appmsg">
-                        <navigator url="/pages/core/person/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-
-                            <view class="weui-cell__bd weui-cell_primary" >
-                                <view class='card-item-font'>关于「萤火虫」</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                        <!-- <navigator url="/pages/core/person/switch/switch" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>卡片开关</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator> -->
-                         <navigator url="/pages/core/person/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>更新日志</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                         <navigator url="/pages/core/person/feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                        
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>反馈</view>
-                            </view>
-                             <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
-                        </navigator>
-                    </view>
-                </view>
-            </view>
+  <view class="user-info" style="background-image: url({{skin}})">
+        <view class="user-skin" bindtap="viewSkin"></view>
+        <image src="{{userInfo.avatarUrl}}" class="user-avatar"></image>
+        <view class="user-nickname">
+            {{userInfo.nickName}}
+            <block wx:if="{{userInfo.gender == 1}}">
+                <view class="user-sex-male"></view>
+            </block>
+            <block wx:elif="{{userInfo.gender == 2}}">
+                <view class="user-sex-female"></view>
+            </block>
         </view>
-
-        <view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
-            <view class="weui-panel__hd" style='font-size:30rpx'>个人信息</view>
-            <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_small-appmsg">
-                    <view class="weui-cells weui-cells_in-small-appmsg">
-                        <view  class="weui-cell weui-cell_access">
-                            <!-- <view class="weui-cell__hd"><image src="/images/core/cet.png" style="width: 20px;height: 20px;margin-right: 5px" /></view> -->
-                             <view class="weui-cell__bd weui-cell_primary" > 
-                                <view class='card-item-font'>姓名</view>
-                                <view class='user_info'>{{info.name}}</view>
-                            </view>
-                            <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
-                        </view>
-                        <view class="weui-cell weui-cell_access" >
- 
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>性别</view>
-                                <view class='user_info'></view>
-                            </view>
-                           
-                        </view>
-                         <view  class="weui-cell weui-cell_access" >
-               
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>手机</view>
-                                <view class='user_info'></view> 
-                            </view>
-                          
-                        </view>
-                         <view  class="weui-cell weui-cell_access">
-                       
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>所在地</view>
-                                <view class='user_info' ></view> 
-                            </view>
-                             
-                        </view>
-                          <view  class="weui-cell weui-cell_access">
-                       
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>个性签名</view>
-                                <view class='user_info' ></view> 
-                            </view>
-                             
-                        </view>
-                    </view>
-                </view>
+        <view class="user-location">{{userInfo.province}},{{userInfo.city}}</view>
+    </view>
+    <view class="grids">
+        <block wx:for="{{gridList}}" wx:for-item="gridItem" wx:for-index="gridIndex" wx:key="grid">
+            <view class="grid" bindtap="viewGridDetail" data-url="{{gridItem.enName}}">
+                <image class="grid-icon" src="/image/personal/{{gridItem.enName}}.png"/>
+                <view class="grid-title">{{gridItem.zhName}}</view>
             </view>
-        </view>
-  </view>
-  <!-- <button bindtap='changeAccount'>切换账号</button> -->
-</view>
-
-   <view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
-            <view class="weui-panel__hd" style='font-size:30rpx'>管理</view>
-            <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_small-appmsg">
-                    <view class="weui-cells weui-cells_in-small-appmsg">
-                        <navigator url="/page/component/address/address" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-
-                            <view class="weui-cell__bd weui-cell_primary" >
-                                <view class='card-item-font'>地址管理</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                        <navigator url="/page/component/address/address" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view class='card-item-font'>订单管理</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
+        </block>
+    </view>
 
                         <!-- 测试按钮 -->
 
@@ -183,38 +89,46 @@
                                 <view  bindtap="returnBook" class='card-item-font'>/returnBook(通过)</view>
                             </view>
                       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                           <view class="weui-cell__bd weui-cell_primary">
-                                <view   bindtap="test" class='card-item-font'>test</view>
+
+                      <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="uploadCaImg" class='card-item-font'>/uploadCaImg(通过)</view>
                             </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-                        
-           
+                             <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="uploadAdImg" class='card-item-font'>/uploadAdImg(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getCaImg" class='card-item-font'>/getCaImg/{type}（通过）</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getAdImg" class='card-item-font'>/getAdImg/{size}（通过）</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-                        
-              
-                    </view>
-                </view>
-            </view>
-        </view>
-   
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="sendMyRequest" class='card-item-font'>/sendMyRequest(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
+                             <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getMyRequest" class='card-item-font'>/getMyRequest/{to_uid}</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 
-    <!-- <view class="orders-box">
-        <view class="orders">我的订单</view>
-        <view class="orders-list" wx:for="{{orders}}" wx:key="index">
-            <view class="orders-number">订单编号：{{item.number}}</view>
-            <view class="orders-detail">
-                <image src="{{item.thumb}}"></image>
-                <view class="">{{item.name}}</view>
-                <view class="">{{item.count}}</view>
-                <text class="orders-status">{{item.status}}</text>
-            </view>
-            <view class="orders-footer">
-                <text>实付：￥{{item.money}}</text>
-                <button size="mini" class="orders-btn" bindtap="payOrders">付款</button>
-            </view>
-        </view>
-    </view> -->
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="sendMyReply" class='card-item-font'>/sendMyReply</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+                              <view class="weui-cell__bd weui-cell_primary">
+                                <view  bindtap="getMyReply" class='card-item-font'>/getMyReply/{from_uid}(通过)</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+  
 </view>

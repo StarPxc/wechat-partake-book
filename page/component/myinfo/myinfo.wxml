@@ -1,0 +1,105 @@
+<!--page/component/myinfo/myinfo.wxml-->
+ <view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
+            <view class="weui-panel__hd" style='font-size:30rpx'>个人信息</view>
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view  class="weui-cell weui-cell_access">
+           
+                             <view class="weui-cell__bd weui-cell_primary" > 
+                                <view class='card-item-font'>昵称</view>
+                                <view class='user_info'>{{info.uNickname}}</view>
+                            </view>
+                        
+                        </view>
+                        <view class="weui-cell weui-cell_access" >
+                       
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view class='card-item-font'>省份</view>
+                                <view class='user_info'>{{info.uProvince}}</view>
+                            </view>
+                           
+                        </view>
+                         <view  class="weui-cell weui-cell_access" >
+
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view class='card-item-font'>城市</view>
+                                <view class='user_info'>{{info.uCity}}</view> 
+                            </view>
+                        
+                        </view>
+                         <view  class="weui-cell weui-cell_access">
+
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view class='card-item-font'>性别</view>
+                                <view class='user_info' >{{info.uGender}}</view> 
+                            </view>
+                           
+                        </view>
+                              <view  class="weui-cell weui-cell_access">
+           
+                             <view class="weui-cell__bd weui-cell_primary" > 
+                                <view class='card-item-font'>手机号</view>
+                                <view class='user_info'>{{info.uPhone}}</view>
+                            </view>
+                        
+                        </view>
+                              <view  class="weui-cell weui-cell_access">
+           
+                             <view class="weui-cell__bd weui-cell_primary" > 
+                                <view class='card-item-font'>邮箱</view>
+                                <view class='user_info'>{{info.uEmail}}</view>
+                            </view>
+                        
+                        </view>
+                         <view  class="weui-cell weui-cell_access">
+           
+                             <view class="weui-cell__bd weui-cell_primary" > 
+                                <view class='card-item-font'>个性签名</view>
+                                <view class='user_info'>{{info.uSelfIntroduction}}</view>
+                            </view>
+                        
+                        </view>
+                             
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <button bindtap='change' class="weui-btn" type="primary" plain="true">更新个人信息</button>
+
+        <view wx:if="{{show==1}}">
+        <view class="card">
+          <view   class="weui-cells__title" style="text-align: left;font-size:25rpx;">手机号：</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='phoneInput' class="weui-input" placeholder="你的手机号..." style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+</view>
+
+        <view class="card">
+          <view   class="weui-cells__title" style="text-align: left;font-size:25rpx;">邮箱：</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='emailInput' class="weui-input" placeholder="你的邮箱..." style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+</view>
+
+          <view class='card'>
+ <view class="weui-cells__title" style="text-align: left;font-size:25rpx;">个性签名：</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea bindinput='introInput' class="weui-textarea" placeholder="向别人介绍一下你自己吧" style="height:150rpx;font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+</view>
+        <button bindtap='submit' class="weui-btn" type="primary" plain="true">提交</button>
+        </view>
