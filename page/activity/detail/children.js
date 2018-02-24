@@ -12,7 +12,8 @@ Page({
     user_token:"",
     activityId:0,
     hidden: true,
-    phone:""
+    phone:"",
+    systemInfo: {},
   },
   cancel: function () {
     this.setData({
@@ -25,40 +26,48 @@ Page({
    })
   },
   confirm: function (e) {
+    if (!this.data.phone){
+        wx.showToast({
+          title: '手机号不能为空',
+          icon:'none'
 
-    var user_token = wx.getStorageSync("user_token")
-    var that = this
-    wx.request({
-      url: 'https://jihangyu.cn/ua/join',
-      header: {
-        "user-token": user_token,
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method:"post",
-      data:{
-        phone:that.data.phone,
-        aId:that.data.activityId
-      },
-      success(res) {
-        if (res.data.code == 200) {
-          wx.showToast({
-            title: '报名成功',
-          })
+        })
+    }else{
+      var user_token = wx.getStorageSync("user_token")
+      var that = this
+      wx.request({
+        url: 'https://jihangyu.cn/ua/join',
+        header: {
+          "user-token": user_token,
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "post",
+        data: {
+          phone: that.data.phone,
+          aId: that.data.activityId
+        },
+        success(res) {
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '报名成功',
+            })
 
-        } else {
-          wx.showModal({
-            title: '错误消息',
-            content: res.data.msg,
-          })
+          } else {
+            wx.showModal({
+              title: '错误消息',
+              content: res.data.msg,
+            })
+          }
+          that.setData({
+            hidden: true
+          });
+        },
+        fail() {
+          console.log("获取失败")
         }
-        that.setData({
-          hidden: true
-        });
-      },
-      fail() {
-        console.log("获取失败")
-      }
-    })
+      })
+    }
+  
   },
   join(){
     this.setData({
@@ -90,6 +99,13 @@ Page({
       fail(){
         console.log("获取失败")
       }
+    })
+
+
+    app.getSystemInfo(function (res) {
+      that.setData({
+        systemInfo: res
+      })
     })
   },
 

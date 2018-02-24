@@ -11,6 +11,10 @@
     color: #999;
     margin-bottom: -1px;
 }
+.hot-image{
+  width: 100%;
+  height: 300px;
+}
 .navbar-text {
     display: block;
     width: 30px;
