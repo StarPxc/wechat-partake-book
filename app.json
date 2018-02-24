@@ -1,10 +1,8 @@
 {
   "pages": [
-      "page/menu/children/children",
     "page/component/user/user",
     "page/component/index",
     "page/activity/detail/children",
- 
     "page/component/category/category",
     "page/component/cart/cart",
     "page/component/address/address",
@@ -13,7 +11,12 @@
     "page/component/list/list",
     "page/menu/children/children",
     "page/menu/discover/discover",
-    "page/component/skin/skin"
+    "page/component/skin/skin",
+    "page/component/feedback/feedback",
+    "page/component/about/about",
+    "page/component/myinfo/myinfo",
+    "page/component/mybooks/mybooks",
+    "page/component/mybooks/book/book"
 
   ],
   "window": {

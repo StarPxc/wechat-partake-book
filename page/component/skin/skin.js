@@ -2,18 +2,18 @@
 Page({
   data: {
     skinList:  [
-    { title: '公路', imgUrl: '/image/userbg/user_bg_1.jpg' },
-    { title: '黑夜森林', imgUrl: '/image/userbg/user_bg_2.jpg' },
-    { title: '鱼与水', imgUrl: '/image/userbg/user_bg_3.jpg' },
-    { title: '山之剪影', imgUrl: '/image/userbg/user_bg_4.jpg' },
-    { title: '火山', imgUrl: '/image/userbg/user_bg_5.jpg' },
-    { title: '科技', imgUrl: '/image/userbg/user_bg_6.jpg' },
-    { title: '沙漠', imgUrl: '/image/userbg/user_bg_7.jpg' },
-    { title: '叶子', imgUrl: '/image/userbg/user_bg_8.jpg' },
-    { title: '早餐', imgUrl: '/image/userbg/user_bg_9.jpg' },
-    { title: '英伦骑车', imgUrl: '/image/userbg/user_bg_10.jpg' },
-    { title: '草原', imgUrl: '/image/userbg/user_bg_11.jpg' },
-    { title: '城市', imgUrl: '/image/userbg/user_bg_12.jpg' }
+      { title: 'Road', imgUrl: '/image/userbg/user_bg_1.jpg' },
+      { title: 'Night', imgUrl: '/image/userbg/user_bg_2.jpg' },
+      { title: 'Water', imgUrl: '/image/userbg/user_bg_3.jpg' },
+      { title: 'Mountain', imgUrl: '/image/userbg/user_bg_4.jpg' },
+      { title: 'Thunder', imgUrl: '/image/userbg/user_bg_5.jpg' },
+      { title: 'Black', imgUrl: '/image/userbg/user_bg_6.jpg' },
+      { title: 'Desert', imgUrl: '/image/userbg/user_bg_7.jpg' },
+      { title: 'Green', imgUrl: '/image/userbg/user_bg_8.jpg' },
+      { title: 'Life', imgUrl: '/image/userbg/user_bg_9.jpg' },
+      { title: 'England', imgUrl: '/image/userbg/user_bg_10.jpg' },
+      { title: 'Grassland', imgUrl: '/image/userbg/user_bg_11.jpg' },
+      { title: 'City', imgUrl: '/image/userbg/user_bg_12.jpg' }
     ],
     nowSkin: ''
   },

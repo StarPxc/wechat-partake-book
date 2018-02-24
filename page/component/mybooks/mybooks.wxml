@@ -1,0 +1,98 @@
+<!--pages/core/library/library.wxml-->
+
+<!-- navbar -->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick" style='background-color:#fff'>
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:for="{{ownlist}}" wx:key="{{code}}" >
+
+            <view class='card'>
+              <view class="weui-form-preview">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">书名</view>
+                    <view class="weui-form-preview__value_in-hd">{{item.bName}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">作者</view>
+                    <view class="weui-form-preview__value">{{item.bAuthor}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">出版社</view>
+                    <view class="weui-form-preview__value">{{item.bPublisher}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">类型</view>
+                    <view class="weui-form-preview__value">{{item.bType}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__ft">
+                  <navigator url="book/book?url={{item.bId}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看</navigator>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+
+        <!-- 借阅界面 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+
+        
+
+             <block wx:for="{{uselist}}" wx:key="{{code}}">
+
+            <view class='card'>
+              <view class="weui-form-preview">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">书名</view>
+                    <view class="weui-form-preview__value_in-hd">{{item.bName}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">作者</view>
+                    <view class="weui-form-preview__value">{{item.bAuthor}}</view>
+                    </view>
+
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">出版社</view>
+                    <view class="weui-form-preview__value">{{item.bPublisher}}</view>
+                  </view>
+                  
+                  
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">类型</view>
+                    <view class="weui-form-preview__value">{{item.bType}}</view>
+                  </view>
+
+              
+                </view>
+                <view class="weui-form-preview__ft">
+                  <navigator url="book/book?url={{item.bId}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">查看</navigator>
+                </view>
+              </view>
+            </view>
+          </block>
+          
+
+        </view>
+
+
+
+      </view>
+    </view>
+  </view>
+</view>

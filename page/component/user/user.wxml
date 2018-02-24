@@ -16,7 +16,7 @@
     <view class="grids">
         <block wx:for="{{gridList}}" wx:for-item="gridItem" wx:for-index="gridIndex" wx:key="grid">
             <view class="grid" bindtap="viewGridDetail" data-url="{{gridItem.enName}}">
-                <view class="grid-icon grid-icon-{{gridItem.enName}}"></view>
+                <image class="grid-icon" src="/image/personal/{{gridItem.enName}}.png"/>
                 <view class="grid-title">{{gridItem.zhName}}</view>
             </view>
         </block>

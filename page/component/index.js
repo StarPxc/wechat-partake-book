@@ -20,10 +20,10 @@ Page({
         if (res.data.code == 200) {
           //单张图片的话，直接替换掉字符串中的,
           var after_filt_data=res.data.data
-          // console.log(after_filt_data)
+         
           for (var i = 0; i < res.data.data.length;i++){
             after_filt_data[i]["bImg"]=after_filt_data[i]["bImg"].replace(",","")
-            // console.log(after_filt_data[i]["bImg"].replace(",", ""))
+           
           }
           that.setData({
             newest: after_filt_data

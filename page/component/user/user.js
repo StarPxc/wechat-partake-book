@@ -8,26 +8,26 @@ Page({
     user_token:"",
     userInfo:[],
     gridList: [
-      { enName: 'favorite', zhName: '关于' },
-      { enName: 'history', zhName: '更新日志' },
-      { enName: 'shake', zhName: '反馈' },
-      { enName: 'gallery', zhName: '个人信息' },
-      { enName: 'gallery', zhName: '请求' },
-      { enName: 'setting', zhName: '回复' }
+      { enName: 'myinfo', zhName: '个人信息' },
+      { enName: 'mybooks', zhName: '我的书库' },
+      { enName: 'mymessages', zhName: '共享消息' },
+      { enName: 'set', zhName: '设置' },
+      { enName: 'about', zhName: '关于' },
+      { enName: 'feedback', zhName: '反馈' }
     ],
     skinList: [
-      { title: '公路', imgUrl: '/image/userbg/user_bg_1.jpg' },
-      { title: '黑夜森林', imgUrl:  '/image/userbg/user_bg_2.jpg' },
-      { title: '鱼与水', imgUrl:  '/image/userbg/user_bg_3.jpg' },
-      { title: '山之剪影', imgUrl: '/image/userbg/user_bg_4.jpg' },
-      { title: '火山', imgUrl: '/image/userbg/user_bg_5.jpg' },
-      { title: '科技', imgUrl:  '/image/userbg/user_bg_6.jpg' },
-      { title: '沙漠', imgUrl:  '/image/userbg/user_bg_7.jpg' },
-      { title: '叶子', imgUrl:  '/image/userbg/user_bg_8.jpg' },
-      { title: '早餐', imgUrl:  '/image/userbg/user_bg_9.jpg' },
-      { title: '英伦骑车', imgUrl: '/image/userbg/user_bg_10.jpg' },
-      { title: '草原', imgUrl:  '/image/userbg/user_bg_11.jpg' },
-      { title: '城市', imgUrl:  '/image/userbg/user_bg_12.jpg' }
+      { title: 'Road', imgUrl: '/image/userbg/user_bg_1.jpg' },
+      { title: 'Night', imgUrl:  '/image/userbg/user_bg_2.jpg' },
+      { title: 'Water', imgUrl:  '/image/userbg/user_bg_3.jpg' },
+      { title: 'Mountain', imgUrl: '/image/userbg/user_bg_4.jpg' },
+      { title: 'Thunder', imgUrl: '/image/userbg/user_bg_5.jpg' },
+      { title: 'Black', imgUrl:  '/image/userbg/user_bg_6.jpg' },
+      { title: 'Desert', imgUrl:  '/image/userbg/user_bg_7.jpg' },
+      { title: 'Green', imgUrl:  '/image/userbg/user_bg_8.jpg' },
+      { title: 'Life', imgUrl:  '/image/userbg/user_bg_9.jpg' },
+      { title: 'England', imgUrl: '/image/userbg/user_bg_10.jpg' },
+      { title: 'Grassland', imgUrl:  '/image/userbg/user_bg_11.jpg' },
+      { title: 'City', imgUrl:  '/image/userbg/user_bg_12.jpg' }
     ],
     skin: ''
   },
@@ -79,6 +79,17 @@ Page({
   viewSkin: function () {
     wx.navigateTo({
       url: "../skin/skin"
+    })
+  },
+  onPullDownRefresh: function () {
+    this.onLoad(function () {
+      wx.stopPullDownRefresh()
+    })
+  },
+  viewGridDetail: function (e) {
+    var data = e.currentTarget.dataset
+    wx.navigateTo({
+      url: "../" + data.url + '/' + data.url
     })
   },
   test(){
