@@ -13,6 +13,18 @@
       {{work.num_view}} 浏览
     </view>
   </view> -->
+    <view class="work-category" >
+    <text class="work-desc-title">活动名称</text>
+    <text>{{title}}</text>
+  </view>
+    <view class="work-category" >
+    <text class="work-desc-title">活动地点</text>
+    <text>{{address}}</text>
+  </view>
+    <view class="work-category" >
+    <text class="work-desc-title">举办方</text>
+    <text>{{sponsor}}</text>
+  </view>
   <view class="work-category" >
     <text class="work-desc-title">活动详情</text>
     <text>{{introduction}}</text>

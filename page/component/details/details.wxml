@@ -1,33 +1,61 @@
 <view class="main">
-    <view class="goods-box">
-        <image src="{{goods.image}}" class="goods-thumb"></image>
-        
-        <navigator open-type="switchTab" url="../cart/cart">
-            <view class="carts-icon {{scaleCart?'on':''}}">
-                <image src="/image/bookbag_s.png"></image>
-                <text class="carts-icon-num" wx:if="{{hasCarts}}">{{totalNum}}</text>
-            </view>
-        </navigator>
-        
-        <view class="goods-operation">
-            <text class="goods-operation-num">数量  {{num}}</text>
-            <text class="goods-operation-add" bindtap="addCount">+</text>
-            <text class="goods-to-cart" bindtap="addToCart">加入书包</text>
-            <image src="/image/cart1.png"  class="goods-cart-img" bindtap="addToCart"></image>
-        </view>
-        <image wx:if="{{show}}" src="/image/bookbag_s.png" class="to-carts-icon"></image>
+  <view class="goods-box">
+    <image src="{{book.bImg[0]}}" class="goods-thumb"></image>
+
+    <!-- <navigator open-type="switchTab" url="../cart/cart">
+      <view class="carts-icon {{scaleCart?'on':''}}">
+        <image src="/image/bookbag_s.png"></image>
+        <text class="carts-icon-num" wx:if="{{hasCarts}}">{{totalNum}}</text>
+      </view>
+    </navigator> -->
+
+    <view class="goods-operation">
+      <text class="goods-operation-num">书名：{{book.bName}}</text>
+
+      <text class="goods-to-cart" bindtap="appoint">预约此书</text>
+      <image src="/image/books/bookp.png" class="goods-cart-img" bindtap="addToCart"></image>
+    </view>
+     <modal hidden="{{hidden}}" title="留言" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}">
+    <input placeholder='留言'  bindinput="letterInput"></input>
+</modal>
+    <!-- <image wx:if="{{show}}" src="/image/bookbag_s.png" class="to-carts-icon"></image>
         <view class="goods-stock">{{goods.stock}}</view>
         <view class="goods-title">{{goods.title}}</view>
-        <view class="goods-price">￥ {{goods.price}}</view>
+        <view class="goods-price">￥ {{goods.price}}</view> -->
+  </view>
+  <view class="goods-tab-box">
+   <view class="newest-title">
+      <text>书籍详情</text>
     </view>
-    <view class="goods-tab-box">
-        <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">商品详情</view>
-        <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">产品参数</view>
-        <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">售后保障</view>
-        <view class="goods-content">
-            <view wx:if="{{curIndex === 0}}">{{goods.detail}}</view>
-            <view wx:if="{{curIndex === 1}}">{{goods.parameter}}</view>
-            <view wx:if="{{curIndex === 2}}">{{goods.service}}</view>
-        </view>
-    </view>
+   
+   <view class="work-category" >
+    <text class="work-desc-title">书名</text>
+    <text>{{book.bName}}</text>
+  </view>
+  <view class="work-category" >
+    <text class="work-desc-title">作者</text>
+    <text>{{book.bAuthor}}</text>
+  </view>
+  <view class="work-category" >
+    <text class="work-desc-title">价格</text>
+    <text>{{book.bPrice}}</text>
+  </view>
+  <view class="work-category" >
+    <text class="work-desc-title">出版社</text>
+    <text>{{book.bPublisher}}</text>
+  </view>
+  <view class="work-category" >
+    <text class="work-desc-title">类别</text>
+    <text>{{book.bType}}</text>
+  </view>
+<view class="work-category" >
+    <text class="work-desc-title">状态</text>
+    <text>{{book.bStatus}}</text>
+  </view>
+  <view class="work-category" >
+    <text class="work-desc-title">ISBN</text>
+    <text>{{book.bIsbn}}</text>
+  </view>
+   
+  </view>
 </view>

@@ -11,11 +11,97 @@ Page({
     hot_last_id: 0,
     latest_list: [],
     latest_last_id: 0,
-    activityList:[]
+    activityList:[],
+    activityEndList:[],
+    recommondList:[],
   },
 
   onLoad() {
-    var that=this
+    var that = this
+
+  //获取推荐的书籍
+  wx.request({
+    url: 'https://jihangyu.cn/book/getBookByTag/recommend',
+    success(res){
+      if(res.data.code==200){
+       
+        var recommondList=res.data.data
+        for(var i=0;i<recommondList.length;i++){
+          recommondList[i].bImg='http://p4a0xyee4.bkt.clouddn.com/'+recommondList[i].bImg.split(",")[0]
+        }
+        console.log(recommondList)
+        that.setData({
+          recommondList: recommondList
+        })
+      }else{
+        wx.showToast({
+          title: res.data.msg,
+        })
+      }
+    }
+  })
+
+
+
+
+    //获取已经结束的活动
+   
+    wx.request({
+      url: 'https://jihangyu.cn/activityEnd/findAllActivityEnd',
+      success(res) {
+        if (res.data.code == 200) {
+          console.log(res.data.data)
+          var activityEndList = []
+          for (var i = 0; i < res.data.data.length; i++) {
+            var imgurls = res.data.data[i].endImgs.split(",");
+            imgurls.pop()
+            for (var j = 0; j < imgurls.length; j++) {
+              imgurls[j] = 'http://p4a0xyee4.bkt.clouddn.com/' + imgurls[j]
+            }
+            console.log(imgurls)
+            var startTime = app.formatDate(res.data.data[i].activity.aStartTime) 
+            var title = res.data.data[i].activity.aTitle
+            var introduction = res.data.data[i].activity.aIntroduction
+            var summary = res.data.data[i].summary
+            var totalPeopleNumber = res.data.data[i].totalPeopleNumber
+            var address = res.data.data[i].activity.aAddress
+            var sponsor = res.data.data[i].activity.aSponsor
+            var endTime = app.formatDate(res.data.data[i].activity.aStartTime) 
+            var activityEnd = {
+               "introduction": introduction, 
+               "imgUrls": imgurls,
+                "title": title, 
+                "startTime": startTime,
+                "summary": summary,
+                "totalPeopleNumber": totalPeopleNumber,
+                "address":address,
+                "sponsor": sponsor,
+                "startTime": startTime,
+                "endTime": endTime
+
+               }
+            activityEndList.push(activityEnd)
+
+          }
+      
+          that.setData({
+            activityEndList: activityEndList
+          })
+
+
+        }else{
+          wx.showModal({
+            title: '错误消息',
+            content: res.data.msg,
+          })
+        }
+
+      },
+      fail() {
+        console.log("获取失败")
+      }
+    })
+    //获取所有未开始的活动
     wx.request({
       url: 'https://jihangyu.cn/activity/findActiviysByState/1',//所有未开始的活动
       success(res) {
@@ -27,7 +113,6 @@ Page({
             for (var j = 0; j < imgurls.length; j++) {
               imgurls[j] = 'http://p4a0xyee4.bkt.clouddn.com/' + imgurls[j]
             }
-            console.log(imgurls)
             var startTime = app.formatDate(res.data.data[i].aStartTime)+'时正式开始'
             var aId = res.data.data[i].aId
             var activity = { "introduction": res.data.data[i].aIntroduction, "imgUrls": imgurls, "title": res.data.data[i].aTitle, "startTime": startTime,"aId":aId}
@@ -67,7 +152,7 @@ Page({
       currentNavbar: e.currentTarget.dataset.idx
     })
     if (e.currentTarget.dataset.idx == 1 && this.data.latest_list.length == 0) {
-      this.pullUpLoadLatest()
+      //this.pullUpLoadLatest()
     }
   },
 
@@ -102,16 +187,5 @@ Page({
   /**
    * [最新]上拉刷新
    */
-  pullUpLoadLatest() {
-    wx.showNavigationBarLoading()
-    api.get(api.HOST_IOS + api.LATEST + '?last_id=' + this.data.latest_last_id)
-      .then(res => {
-        this.setData({
-          latest_list: this.data.latest_list.concat(res.data.list),
-          latest_last_id: res.data.last_id
-        })
-        wx.hideNavigationBarLoading()
-        wx.stopPullDownRefresh()
-      })
-  }
+ 
 })
