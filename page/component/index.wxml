@@ -1,78 +1,120 @@
 <view class="main">
-    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
-        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-            <swiper-item>
-                <image src="{{item}}" class="slide-image" width="100%"/>
-            </swiper-item>
-        </block>
-    </swiper>
-<!-- 首页选择按钮 -->
-<view  stytle=" overflow-x: hidden; overflow-y: auto;">
-<!-- 搜索框 -->
-              <view class="weui-search-bar">
-                <view class="weui-search-bar__form">
-                  <view class="weui-search-bar__box">
-                    <input type="text" class="weui-search-bar__input" value="{{inputVal}}"  bindinput="inputTyping" />
-                   
-                  </view>
-                
-                </view>
-                <view class="weui-search-bar__cancel-btn"  bindtap="hideInput" bindtap='search'>搜索</view>
-              </view>
+  <view bindtap='addBook'>
+    <image class='add-book' src='/image/books/plus.png'></image>
+  </view>
+  <view hidden="{{hidden}}" class='uploadForm '>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+    <view bindtap='close' ><image class='close' src='/image/close.png'></image></view>
+      <view class="myTitle">
+        <text>必填</text>
+      </view>
+        <input name="bName" placeholder="  书名" />
+        <input name="bAuthor" placeholder="  作者" />
+        <input name="bPrice" placeholder="  价格" />
+        <input name="bPublisher" placeholder="  出版商" />
+        <picker name="bType" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+             <text class='book-type-left'>选择类型</text><text class='book-type-right'>{{array[index]}}</text>
+        </picker>
+      <view class="myTitle">
+        <text>选填</text>
+      </view>
+        <input name="bBarcode " placeholder="Barcode" />
+        <input name="bIsbn " placeholder="Isbn" />
+        <view bindtap='chooseImage' class='updateImg'>
+          <button> <text class='buttonUploadInfo'>上传书本封面</text>
+            <image class='upload' src='/image/books/upload.png'></image>
+          </button>
+        </view>
+      <view class="myBtnArea">
+        <button formType="submit">提交</button>
+        <button formType="reset" class='reset'>重置</button>
+      </view>
+    </form>
+  </view>
+  <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="100%" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 首页选择按钮 -->
+  <view stytle=" overflow-x: hidden; overflow-y: auto;">
+    <!-- 搜索框 -->
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <input type="text" class="weui-search-bar__input search" value="{{inputVal}}" bindinput="inputTyping" />
 
-          
-  <!-- 选择按钮 -->
-  <view  class="item">
-   
-    <view class="item_left" class="top_image"  bindtap="isShowToast">
-        <image src="/image/teachbook.png" class="image"/>
-        <view class="mark" ><text class="text">教材</text></view>
+        </view>
+
+      </view>
+      <view class="weui-search-bar__cancel-btn" bindtap="hideInput" bindtap='search'>搜索</view>
     </view>
-    
-    <view class="item_right" class="top_image" bindtap="isShowToast">
+
+
+    <!-- 选择按钮 -->
+    <view class="item">
+
+      <view class="item_left" class="top_image" bindtap="isShowToast">
+        <image src="/image/teachbook.png" class="image" />
+        <view class="mark">
+          <text class="text">教材</text>
+        </view>
+      </view>
+
+      <view class="item_right" class="top_image" bindtap="isShowToast">
         <navigator url='/page/menu/discover/discover'>
-        <image src="/image/find.png" class="image"/>
+          <image src="/image/find.png" class="image" />
         </navigator>
-        <view class="mark"><text class="text-middle">发现</text></view>
-    </view>
-    
-    
-    <view class="item_right" class="top_image" bindtap="isShowToast">
-        <navigator url='/page/menu/children/children'>
-        <image src="/image/baby.png" class="image"/>
-         </navigator>
-        <view class="mark" ><text class="text">幼儿</text></view>
-    </view>
-   
-</view>
+        <view class="mark">
+          <text class="text-middle">发现</text>
+        </view>
+      </view>
 
-</view>
- 
-    
-    <view class="selected">
-        <view class="select-title"><text>幼儿精选</text></view>
-        <view class="select-top">
-             <view class="select-top-small">
-                <navigator url="list/list">
-                    <image src="/image/index2.jpg"></image>
-                </navigator>
-            </view>
-            <view class="select-top-small">
-                <navigator url="list/list">
-                    <image src="/image/index3.jpg"></image>
-                </navigator>
-            </view> 
+
+      <view class="item_right" class="top_image" bindtap="isShowToast">
+        <navigator url='/page/menu/children/children'>
+          <image src="/image/baby.png" class="image" />
+        </navigator>
+        <view class="mark">
+          <text class="text">幼儿</text>
         </view>
-        <view class="select-bottom">
-            <navigator url="list/list">
-                <image src="/image/index1.jpg"></image>
-            </navigator>
-        </view>
+      </view>
+
     </view>
-    <view class="newest">
-        <view class="newest-title"><text>最近上架</text></view>
-         <view class="newest-box">
-      <block wx:for="{{lastedList}}" wx:key="{{index}}" >
+
+  </view>
+
+
+  <view class="selected">
+    <view class="select-title">
+      <text>幼儿精选</text>
+    </view>
+    <view class="select-top">
+      <view class="select-top-small">
+        <navigator url="list/list">
+          <image src="/image/index2.jpg"></image>
+        </navigator>
+      </view>
+      <view class="select-top-small">
+        <navigator url="list/list">
+          <image src="/image/index3.jpg"></image>
+        </navigator>
+      </view>
+    </view>
+    <view class="select-bottom">
+      <navigator url="list/list">
+        <image src="/image/index1.jpg"></image>
+      </navigator>
+    </view>
+  </view>
+  <view class="newest">
+    <view class="newest-title">
+      <text>最近上架</text>
+    </view>
+    <view class="newest-box">
+      <block wx:for="{{lastedList}}" wx:key="{{index}}">
         <view class="newest-list">
           <navigator url="/page/component/details/details?bId={{item.bId}}">
             <image src="{{item.bImg}}"></image>
@@ -86,5 +128,5 @@
         </view>
       </block>
     </view>
-    </view>
+  </view>
 </view>
