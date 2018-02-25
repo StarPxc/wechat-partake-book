@@ -139,7 +139,7 @@
       <text>最近上架</text>
     </view>
     <view class="newest-box">
-      <view class="newest-list">
+      <!-- <view class="newest-list">
         <navigator url="/page/component/details/details">
           <image src="/image/new/1.jpg"></image>
           <view class="newest-text">
@@ -226,7 +226,7 @@
             <text>AAA</text>
           </view>
         </navigator>
-      </view>
+      </view> -->
 
     </view>
   </view>

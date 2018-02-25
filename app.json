@@ -3,7 +3,6 @@
 
     "page/component/index",
     "page/component/details/details",
-    "page/menu/children/children",
     "page/component/user/user",  
     "page/component/category/category",
     "page/component/cart/cart",
@@ -17,7 +16,8 @@
     "page/component/about/about",
     "page/component/myinfo/myinfo",
     "page/component/mybooks/mybooks",
-    "page/component/mybooks/book/book"
+    "page/component/mybooks/book/book",
+    "page/activity/detail/children"
 
   ],
   "window": {
