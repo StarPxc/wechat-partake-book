@@ -22,18 +22,18 @@
     </view>
     </block>
     </view>
-
-  <view class="ctnt1 placehold" hidden="{{currentNavtab==1 ? '' : true}}">
+<block  wx:for="{{outBox}}" wx:key="{{index}}">
+  <view class="ctnt0" hidden="{{currentNavtab==1 ? '' : true}}">
     <view class="notify-item flex-wrp">
       <view class="avatar flex-item">
-        <image src="/image/messages/icon9.jpeg"></image>
+        <image src="{{item.bookimg}}"></image>
       </view>
       <view class="notify-content flex-item">
-        <text class="notify-source">Rebecca  回答了问题</text>
-        <text class="notify-title">C#如何在不覆盖原有文件的情况下直接修改某一部分的内容？</text>
+        <text class="notify-source">《{{item.bookname}}》 的主人 {{item.fromUnickbname}} 回复了你</text>
+        <text class="notify-title"></text>
       </view>
     </view>
   </view>
- 
+ </block>
 </scroll-view>
 

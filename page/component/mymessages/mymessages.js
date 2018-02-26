@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navTab: ["收信箱", "发信箱"],
+    navTab: ["申请", "答复"],
     currentNavtab: "0",
     inBox:[],
     outBox:[],
@@ -64,8 +64,12 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 200) {
+          var mes = res.data.data
+          for (var i = 0; i < mes.length; i++) {
+            mes[i].bookimg = 'http://p4a0xyee4.bkt.clouddn.com/' + mes[i].bookimg.split(",")[0]
+          }
           that.setData({
-            outBox: res.data.data
+            outBox: mes
           })
           console.log(that.data.outBox)
         } else {
