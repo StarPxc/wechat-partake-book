@@ -16,20 +16,20 @@ Page({
       { enName: 'feedback', zhName: '反馈' }
     ],
     skinList: [
-      { title: 'Road', imgUrl: '/image/userbg/user_bg_1.jpg' },
-      { title: 'Night', imgUrl:  '/image/userbg/user_bg_2.jpg' },
-      { title: 'Water', imgUrl:  '/image/userbg/user_bg_3.jpg' },
-      { title: 'Mountain', imgUrl: '/image/userbg/user_bg_4.jpg' },
-      { title: 'Thunder', imgUrl: '/image/userbg/user_bg_5.jpg' },
-      { title: 'Black', imgUrl:  '/image/userbg/user_bg_6.jpg' },
-      { title: 'Desert', imgUrl:  '/image/userbg/user_bg_7.jpg' },
-      { title: 'Green', imgUrl:  '/image/userbg/user_bg_8.jpg' },
-      { title: 'Life', imgUrl:  '/image/userbg/user_bg_9.jpg' },
-      { title: 'England', imgUrl: '/image/userbg/user_bg_10.jpg' },
-      { title: 'Grassland', imgUrl:  '/image/userbg/user_bg_11.jpg' },
-      { title: 'City', imgUrl:  '/image/userbg/user_bg_12.jpg' }
+      { title: 'Road', imgUrl: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_1.jpg' },
+      { title: 'Night', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_2.jpg' },
+      { title: 'Water', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_3.jpg' },
+      { title: 'Mountain', imgUrl: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_4.jpg' },
+      { title: 'Thunder', imgUrl: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_5.jpg' },
+      { title: 'Black', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_6.jpg' },
+      { title: 'Desert', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_7.jpg' },
+      { title: 'Green', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_8.jpg' },
+      { title: 'Life', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_9.jpg' },
+      { title: 'England', imgUrl: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_10.jpg' },
+      { title: 'Grassland', imgUrl:  'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_11.jpg' },
+      { title: 'City', imgUrl: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_12.jpg' }
     ],
-    skin: ''
+    skin: 'http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_4.jpg'
   },
   onLoad(){
 
@@ -67,7 +67,7 @@ Page({
         success: function (res) {
           if (res.data == "") {
             self.setData({
-              skin: "/image/userbg/user_bg_4.jpg"
+              skin: "http://p4a0xyee4.bkt.clouddn.com/userbg/user_bg_4.jpg"
             })
           } else {
             self.setData({
