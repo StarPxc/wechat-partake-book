@@ -12,7 +12,7 @@ Page({
     newest: [],
     lastedList: [],
     hidden: true,
-    array: ['小说', '戏剧', '古典文学', '情感'],
+    array: ['小说','社会', '财经', '科学', '哲学','幼儿','音乐','戏剧','名著','情感','其他'],
     tempFilePaths: [],
     uoloadImg: "",
     tempFilePaths: [],
