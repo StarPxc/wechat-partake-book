@@ -52,6 +52,7 @@ Page({
     /**
      * 获取本地缓存 地址信息
      */
+    
     wx.getStorage({
       key: 'address',
       success: function(res){
@@ -386,6 +387,7 @@ Page({
 
   sendMyRequest: function (event) {
     var that = this;
+    var user_token = wx.getStorageSync("user_token")
     wx.request({
       url: 'https://jihangyu.cn/message/sendMyRequest',
       method: 'POST',
@@ -398,7 +400,7 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        'user-token': this.data.user_token
+        'user-token': user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -411,12 +413,13 @@ Page({
   },
 
   getMyRequest: function (event) {
+    var user_token = wx.getStorageSync("user_token")
     wx.request({
-      url: 'https://jihangyu.cn/message/getMyRequest/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
+      url: 'https://jihangyu.cn/message/getMyRequest',
       method: 'GET',
       header: {
         'content-type': 'application/json',
-        'user-token': this.data.user_token
+        'user-token': user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -446,7 +449,7 @@ Page({
       },
       header: {
         'content-type': 'application/json',
-        'user-token': this.data.user_token
+        'user-token': user_token
       },
       success: function (res) {
         if (res.data.code == 200) {
@@ -459,12 +462,13 @@ Page({
   },
 
   getMyReply: function (event) {
+    var user_token = wx.getStorageSync("user_token")
     wx.request({
-      url: 'https://jihangyu.cn/message/getMyReply/oOor05dnQyVDzvRSIKsT-EzRTYgQ',
+      url: 'https://jihangyu.cn/message/getMyReply',
       method: 'GET',
       header: {
         'content-type': 'application/json',
-        'user-token': this.data.user_token
+        'user-token':user_token
       },
       success: function (res) {
         if (res.data.code == 200) {

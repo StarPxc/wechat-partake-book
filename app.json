@@ -17,7 +17,8 @@
     "page/component/myinfo/myinfo",
     "page/component/mybooks/mybooks",
     "page/component/mybooks/book/book",
-    "page/activity/detail/children"
+    "page/activity/detail/children",
+    "page/component/mymessages/mymessages"
 
   ],
   "window": {
