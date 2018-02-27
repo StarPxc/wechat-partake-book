@@ -5,21 +5,72 @@
   <view hidden="{{hidden}}" class='uploadForm '>
     <form bindsubmit="formSubmit" bindreset="formReset">
     <view bindtap='close' ><image class='close' src='/image/close.png'></image></view>
-      <view class="myTitle">
-        <text>必填</text>
-      </view>
-        <input name="bName" placeholder="  书名" />
-        <input name="bAuthor" placeholder="  作者" />
-        <input name="bPrice" placeholder="  价格" />
-        <input name="bPublisher" placeholder="  出版商" />
-        <picker name="bType" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-             <text class='book-type-left'>选择类型</text><text class='book-type-right'>{{array[index]}}</text>
+      
+      <!-- 表单 -->
+      <view class='card'>
+         
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='booknameinput' class="weui-input" placeholder="请输入书名*" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+        
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='authorinput' class="weui-input" placeholder="请输入作者*" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+      
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='priceinput' class="weui-input" placeholder="请输入价格*" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+         <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='publisherinput' class="weui-input" placeholder="请输入出版商*" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+             <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='barcodeinput' class="weui-input" placeholder="请输入条形码" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input bindinput='isbninput' class="weui-input" placeholder="请输入ISBN" style="font-size:28rpx;text-align: left;" />
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+         <view class="weui-cell__bd">
+         <picker name="bType" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+             <text class='weui-input' style="font-size:28rpx;text-align: left;" >选择类型*</text><text class='book-type-right'>{{array[index]}}</text>
         </picker>
-      <view class="myTitle">
-        <text>选填</text>
-      </view>
-        <input name="bBarcode " placeholder="Barcode" />
-        <input name="bIsbn " placeholder="Isbn" />
+         </view>
+        </view>
+        </view>
+
+
+</view>
         <view bindtap='chooseImage' class='updateImg'>
           <button> <text class='buttonUploadInfo'>上传书本封面</text>
             <image class='upload' src='/image/books/upload.png'></image>

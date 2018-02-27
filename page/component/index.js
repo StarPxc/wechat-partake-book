@@ -16,7 +16,43 @@ Page({
     tempFilePaths: [],
     uoloadImg: "",
     tempFilePaths: [],
-    index: 0
+    index: 0,
+    bookname:'',
+    author:'',
+    price:'',
+    publisher:'',
+    barcode:'',
+    isbn:''
+  },
+  booknameinput(e) {
+    this.setData({
+      bookname: e.detail.value
+    })
+  },
+  authorinput(e) {
+    this.setData({
+      author: e.detail.value
+    })
+  },
+  priceinput(e) {
+    this.setData({
+      price: e.detail.value
+    })
+  },
+  publisherinput(e) {
+    this.setData({
+      publisher: e.detail.value
+    })
+  },
+  barcodeinput(e) {
+    this.setData({
+      barcode: e.detail.value
+    })
+  },
+  isbninput(e) {
+    this.setData({
+      isbn: e.detail.value
+    })
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -80,16 +116,23 @@ Page({
   formSubmit: function (e) {
     var that = this
     var user_token = wx.getStorageSync("user_token")
-    var formData = e.detail.value
-    formData.bType = this.data.array[formData.bType]
-    if (formData.bName && formData.bAuthor && formData.bPrice && formData.bPublisher && formData.bType) {
+
+    var booktype = this.data.array[that.data.index]
+    console.log(booktype)
+    if (that.data.bookname && that.data.author && that.data.price && that.data.publisher && booktype) {
       wx.request({
         url: 'https://jihangyu.cn/book/addBook',
         header: {
           'content-type': 'application/form-data', // 默认值
           'user-token': user_token
         },
-        data: formData,
+        data: {
+          bName:that.data.bookname,
+          bAuthor: that.data.author,
+          bPrice: that.data.price,
+          bPublisher: that.data.publisher,
+          bType: booktype
+        },
         method: "POST",
         success(res) {
           if (res.data.code == 200) {
@@ -143,7 +186,7 @@ Page({
       })
     } else {
       wx.showToast({
-        title: '必填信息不能为空',
+        title: '带*标记为必填',
       })
     }
 
