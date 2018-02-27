@@ -11,7 +11,8 @@ Page({
     outBox: [],
     senders: [],
     receivers: [],
-    unreadMessage: 0
+    unreadMessage: 0,
+    pass:true
   },
   switchTab: function (e) {
     this.setData({
@@ -156,14 +157,21 @@ Page({
       success: function (res) {
         if (res.data.code == 200) {
           var mes = res.data.data
-          console.log(mes)
+          var pass = true
+         
+
           for (var i = 0; i < mes.length; i++) {
             mes[i].bookimg = 'http://p4a0xyee4.bkt.clouddn.com/' + mes[i].bookimg.split(",")[0]
+            if (mes[i].message.pass == 1) {
+              mes[i].pass = true
+            } else {
+              mes[i].pass = false
+            }
           }
           that.setData({
-            outBox: mes
+            outBox: mes,
           })
-          console.log(that.data.outBox)
+          console.log(mes)
         } else {
           console.log(res.data)
         }

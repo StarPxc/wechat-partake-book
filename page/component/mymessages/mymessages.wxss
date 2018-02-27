@@ -6,6 +6,17 @@
   text-align: left;
   width: 670rpx;
 }
+.myInfo{
+  margin: 18rpx;
+}
+.ok{
+  color: green;
+  font-size: 0.7rem;
+}
+.no{
+  color: red;
+  font-size: 0.7rem;
+}
 .unread text{
   display: inline-block;
   line-height: 60rpx;
