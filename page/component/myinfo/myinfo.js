@@ -10,6 +10,7 @@ Page({
     email:'',
     selfintroduction:'',
     info: {},
+    userinfo:{},
     show:0
   },
   change(){
@@ -19,12 +20,9 @@ Page({
     })
   },
   submit(){
-    var userInfo=wx.getStorageSync("userInfo")
-    console.log(userInfo)
-    var that=this
+    var that = this
+    console.log(that.data.userinfo)
     var user_token = wx.getStorageSync("user_token")
-    console.log(that.data.email)
-    console.log(that.data.phone)
     wx.request({
       url: 'https://jihangyu.cn/user/updateUser',
       method:'POST',
@@ -32,10 +30,10 @@ Page({
         uemail:that.data.email,
         uphone:that.data.phone,
         uselfIntroduction: that.data.selfintroduction,
-        unickname: userInfo.nickName,
-        ucity: userInfo.city,
-        ugender: userInfo.gender==1?'男':'女',
-        uprovince: userInfo.province
+        unickname: that.data.userinfo.nickName,
+        ucity: that.data.userinfo.city,
+        ugender: that.data.userinfo.gender==1?'男':'女',
+        uprovince: that.data.userinfo.province
 
       },
       header:{
@@ -79,6 +77,13 @@ Page({
   onLoad: function (options) {
     var that=this
     var user_token = wx.getStorageSync("user_token")
+    wx.getUserInfo({
+      success: function (res) {
+        that.setData({
+          userinfo: res.userInfo
+        })
+      }
+    })
     wx.request({
       url: 'https://jihangyu.cn/user/getCurrentUser',
       method:'GET',

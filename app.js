@@ -265,6 +265,7 @@ App({
           })
         }
       })
+      wx.setStorageSync('userinfo', that.globalData.userInfo)
     }
   },
   getSystemInfo: function (cb) {

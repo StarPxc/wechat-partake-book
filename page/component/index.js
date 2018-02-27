@@ -252,7 +252,7 @@ Page({
         that.setData({
           imgUrls: imgurls
         })
-        console.log(that.data.imgUrls)
+        // console.log(that.data.imgUrls)
       }
     })
 
@@ -269,7 +269,7 @@ Page({
         that.setData({
           adimgUrls_little:adimgs
         })
-        console.log(that.data.adimgUrls_little)
+        // console.log(that.data.adimgUrls_little)
       }
     })
 
@@ -286,7 +286,7 @@ Page({
         that.setData({
           adimgUrls_large: adimgs
         })
-        console.log(that.data.adimgUrls_large)
+        // console.log(that.data.adimgUrls_large)
       }
     })
 
