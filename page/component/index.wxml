@@ -145,17 +145,17 @@
     <view class="select-top">
     <block wx:for="{{adimgUrls_little}}" wx:key="{{index}}" >
       <view class="select-top-small">
-        <navigator url="list/list">
+        <!-- <navigator url="list/list"> -->
           <image src="{{item}}"></image>
-        </navigator>
+        <!-- </navigator> -->
       </view>
       </block>
     </view>
     <block wx:for="{{adimgUrls_large}}" wx:key="{{index}}" >
     <view class="select-bottom">
-      <navigator url="list/list">
+      <!-- <navigator url="list/list"> -->
         <image src="{{item}}"></image>
-      </navigator>
+      <!-- </navigator> -->
     </view>
     </block>
   </view>
