@@ -27,6 +27,42 @@ Page({
          wx.showToast({
            title: '处理成功',
          })
+         if (id == '1') {//orderBook
+           wx.request({
+             url: 'https://jihangyu.cn/ub/orderBook',
+             header: {
+               'user-token': user_token,
+               "Content-Type": "application/x-www-form-urlencoded", // 默认值
+             },
+             data: {
+               bId: formData.bid
+             },
+             method: "POST",
+             success(res) {
+               if (res.data.code == 200) {
+                 console.log(res.data)
+                 wx.showModal({
+                   title: 'test',
+                   content: '',
+                 })
+               } else if (res.data.code == 508) {
+                 app.login()
+                 wx.showToast({
+                   title: '正在重新登录',
+                   icon: "loading"
+                 })
+               } else {
+                 console.log(res.data)
+                 wx.showToast({
+                   title: res.data.msg,
+                 })
+               }
+             },
+             fail: function (res) {
+               console.log(res);
+             }
+           })
+         }
 
         } else if (res.data.code == 508) {
           app.login()
@@ -44,42 +80,7 @@ Page({
         console.log(res);
       }
     })
-    if(id=='1'){//orderBook
-      wx.request({
-        url: 'https://jihangyu.cn/ub/orderBook',
-        header: {
-          'user-token': user_token,
-          "Content-Type": "application/x-www-form-urlencoded", // 默认值
-        },
-        data: {
-          bId:formData.bid
-        },
-        method: "POST",
-        success(res) {
-          if (res.data.code == 200) {
-           console.log(res.data)
-            wx.showModal({
-              title: 'test',
-              content: '',
-            })
-          } else if (res.data.code == 508) {
-            app.login()
-            wx.showToast({
-              title: '正在重新登录',
-              icon: "loading"
-            })
-          } else {
-            console.log(res.data)
-            wx.showToast({
-              title: res.data.msg,
-            })
-          }
-        },
-        fail: function (res) {
-          console.log(res);
-        }
-      })
-    }
+
   },
   /**
    * 生命周期函数--监听页面加载
