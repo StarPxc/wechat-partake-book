@@ -1,11 +1,9 @@
 const app = getApp()
 Page({
   data: {
-    imgUrls: [
-      '/image/books/book1.png',
-      '/image/books/book2.png',
-      '/image/books/book3.png'
-    ],
+    imgUrls: [],
+    adimgUrls_little:[],
+    adimgUrls_large: [],
     indicatorDots: false,
     autoplay: false,
     interval: 3000,
@@ -119,7 +117,7 @@ Page({
     var user_token = wx.getStorageSync("user_token")
 
     var booktype = this.data.array[that.data.index]
-    console.log(booktype)
+    // console.log(booktype)
     if (that.data.tempFilePaths[0]) {
       if (that.data.bookname && that.data.author && that.data.price && that.data.publisher && booktype) {
         wx.request({
@@ -241,6 +239,57 @@ Page({
         }
       }
     })
+//获取首页轮播图
+    wx.request({
+      url: 'https://jihangyu.cn/img/getCaImg/index',
+      method:"GET",
+      success:function(res){
+        var urls = res.data.data
+        var imgurls=[]
+        for(var i=0;i<urls.length;i++){
+          imgurls[i] = "http://p4a0xyee4.bkt.clouddn.com/" + urls[i].url
+        }
+        that.setData({
+          imgUrls: imgurls
+        })
+        console.log(that.data.imgUrls)
+      }
+    })
+
+//获取首页广告图(小尺寸)
+    wx.request({
+      url: 'https://jihangyu.cn/img/getAdImg/little',
+      method:"GET",
+      success:function(res){
+        var urls=res.data.data
+        var adimgs=[]
+        for(var i=0;i<urls.length;i++){
+          adimgs[i] ="http://p4a0xyee4.bkt.clouddn.com/"+urls[i].url
+        }
+        that.setData({
+          adimgUrls_little:adimgs
+        })
+        console.log(that.data.adimgUrls_little)
+      }
+    })
+
+    //获取首页广告图(大尺寸)
+    wx.request({
+      url: 'https://jihangyu.cn/img/getAdImg/large',
+      method: "GET",
+      success: function (res) {
+        var urls = res.data.data
+        var adimgs = []
+        for (var i = 0; i < urls.length; i++) {
+          adimgs[i] = "http://p4a0xyee4.bkt.clouddn.com/" + urls[i].url
+        }
+        that.setData({
+          adimgUrls_large: adimgs
+        })
+        console.log(that.data.adimgUrls_large)
+      }
+    })
+
   }
 
 

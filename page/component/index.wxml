@@ -143,22 +143,21 @@
       <text>幼儿精选</text>
     </view>
     <view class="select-top">
+    <block wx:for="{{adimgUrls_little}}" wx:key="{{index}}" >
       <view class="select-top-small">
         <navigator url="list/list">
-          <image src="/image/index2.jpg"></image>
+          <image src="{{item}}"></image>
         </navigator>
       </view>
-      <view class="select-top-small">
-        <navigator url="list/list">
-          <image src="/image/index3.jpg"></image>
-        </navigator>
-      </view>
+      </block>
     </view>
+    <block wx:for="{{adimgUrls_large}}" wx:key="{{index}}" >
     <view class="select-bottom">
       <navigator url="list/list">
-        <image src="/image/index1.jpg"></image>
+        <image src="{{item}}"></image>
       </navigator>
     </view>
+    </block>
   </view>
   <view class="newest">
     <view class="newest-title">

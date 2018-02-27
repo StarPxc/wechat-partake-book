@@ -56,12 +56,12 @@ swiper-item image {
 }
 .select-top-small{
     width: 375rpx;
-    height: 375rpx;
+    height: 275rpx;
     float: left;
 }
 .select-bottom,.select-top{
     width: 100%;
-    height: 375rpx;
+    height: 275rpx;
 }
 .select-top-small image,.select-bottom image,.select-top-small navigator,.select-bottom navigator{
     display: block;
