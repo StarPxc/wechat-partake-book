@@ -10,15 +10,16 @@
       <image src="/image/messages/allread.png"></image>
     </view>
     <block wx:for="{{inBox}}" wx:key="{{index}}">
-      <navigator url='/page/component/mymessages/handleRequest/handleRequest?id={{item.message.bid+";"+item.message.fromUid+";"+item.message.toUid+";"+item.mId}}'><view class="notify-item flex-wrp"  >
-        <view class="avatar flex-item">
-          <image src="{{item.bookimg}}"></image>
+      <navigator url='/page/component/mymessages/handleRequest/handleRequest?id={{item.message.bid+";"+item.message.fromUid+";"+item.message.toUid+";"+item.mId}}'>
+        <view class="notify-item flex-wrp">
+          <view class="avatar flex-item">
+            <image src="{{item.bookimg}}"></image>
+          </view>
+          <view class="notify-content flex-item">
+            <text class="notify-source">来自 {{item.fromUcity}} 的 {{item.fromUnickbname}} 看中了你的《{{item.bookname}}》</text>
+            <text class="notify-title">{{item.message.letter}}</text>
+          </view>
         </view>
-        <view class="notify-content flex-item">
-          <text class="notify-source">来自 {{item.fromUcity}} 的 {{item.fromUnickbname}} 看中了你的《{{item.bookname}}》</text>
-          <text class="notify-title">{{item.message.letter}}</text>
-        </view>
-      </view>
       </navigator>
     </block>
   </view>
@@ -30,6 +31,10 @@
         </view>
         <view class="notify-content flex-item">
           <text class="notify-source">《{{item.bookname}}》 的主人 {{item.fromUnickbname}} 回复了你</text>
+          <view class='myInfo'>
+            <text wx:if="{{item.pass}}" class='ok'>已通过</text>
+            <text wx:if="{{!item.pass}}" class='no'>已拒绝</text>
+          </view>
           <text class="notify-title"></text>
         </view>
       </view>

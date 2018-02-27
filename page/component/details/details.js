@@ -63,7 +63,7 @@ Page({
           that.setData({
             hidden: true
           });
-        }if(res.data.code==508){
+        }else if(res.data.code==508){
           app.login()
           wx.showToast({
             title: '正在重新登录',

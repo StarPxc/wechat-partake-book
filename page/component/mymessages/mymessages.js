@@ -11,96 +11,13 @@ Page({
     outBox: [],
     senders: [],
     receivers: [],
-    unreadMessage: 0
+    unreadMessage: 0,
+    pass:true
   },
   switchTab: function (e) {
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
-  },
-  handle(e) {
-    var user_token = wx.getStorageSync("user_token")
-    var that = this
-    var currentData = e.currentTarget.id
-    var dataList = currentData.split(";")
-
-    var data = {
-      'bid': dataList[0],
-      'fromUid': dataList[1],
-      'toUid': dataList[2],
-      'letter': dataList[3],
-      'id':dataList[4]
-    }
-    console.log(data)
-    wx.showModal({
-      title: '是否同意预约',
-      content: data.letter,
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          data.pass = 1
-          wx.request({
-            url: 'https://jihangyu.cn/message/sendMyReply',
-            header: {
-              'user-token': user_token
-            },
-            data: data,
-            method: "POST",
-            success(res) {
-              if (res.data.code == 200) {
-
-                console.log(res.data)
-
-                
-              } else if (res.data.code == 508) {
-                app.login()
-                wx.showToast({
-                  title: '正在重新登录',
-                  icon: "loading"
-                })
-              } else {
-                wx.showToast({
-                  title: res.data.msg,
-                })
-              }
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          })
-        } else if (res.cancel) {
-          data.pass = 2
-          wx.request({
-            url: 'https://jihangyu.cn/message/sendMyReply',
-            header: {
-              'user-token': user_token
-            },
-            data: data,
-            method: "POST",
-            success(res) {
-              if (res.data.code == 200) {
-
-                console.log(res.data)
-              } else if (res.data.code == 508) {
-                app.login()
-                wx.showToast({
-                  title: '正在重新登录',
-                  icon: "loading"
-                })
-              } else {
-                wx.showToast({
-                  title: res.data.msg,
-                })
-              }
-
-            },
-            fail: function (res) {
-              console.log(res);
-            }
-          })
-        }
-      }
-    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -156,14 +73,21 @@ Page({
       success: function (res) {
         if (res.data.code == 200) {
           var mes = res.data.data
-          console.log(mes)
+          var pass = true
+         
+
           for (var i = 0; i < mes.length; i++) {
             mes[i].bookimg = 'http://p4a0xyee4.bkt.clouddn.com/' + mes[i].bookimg.split(",")[0]
+            if (mes[i].message.pass == 1) {
+              mes[i].pass = true
+            } else {
+              mes[i].pass = false
+            }
           }
           that.setData({
-            outBox: mes
+            outBox: mes,
           })
-          console.log(that.data.outBox)
+          console.log(mes)
         } else {
           console.log(res.data)
         }

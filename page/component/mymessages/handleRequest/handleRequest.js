@@ -6,7 +6,8 @@ Page({
   data: {
     msg:{},
     info:{},
-    formData:{}
+    formData:{},
+    bookInfo:{}
   },
   hadnle(e){
     var id=e.currentTarget.id
@@ -23,9 +24,45 @@ Page({
       method: "POST",
       success(res) {
         if (res.data.code == 200) {
-
-          console.log(res.data)
-
+         wx.showToast({
+           title: '处理成功',
+         })
+         if (id == '1') {//orderBook
+           wx.request({
+             url: 'https://jihangyu.cn/ub/orderBook',
+             header: {
+               'user-token': user_token,
+               "Content-Type": "application/x-www-form-urlencoded", // 默认值
+             },
+             data: {
+               bId: formData.bid
+             },
+             method: "POST",
+             success(res) {
+               if (res.data.code == 200) {
+                 console.log(res.data)
+                 wx.showModal({
+                   title: 'test',
+                   content: '',
+                 })
+               } else if (res.data.code == 508) {
+                 app.login()
+                 wx.showToast({
+                   title: '正在重新登录',
+                   icon: "loading"
+                 })
+               } else {
+                 console.log(res.data)
+                 wx.showToast({
+                   title: res.data.msg,
+                 })
+               }
+             },
+             fail: function (res) {
+               console.log(res);
+             }
+           })
+         }
 
         } else if (res.data.code == 508) {
           app.login()
@@ -43,6 +80,7 @@ Page({
         console.log(res);
       }
     })
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -59,6 +97,29 @@ Page({
     this.setData({
       formData:data
     })
+
+    //获取书本信息
+    wx.request({
+      url: 'https://jihangyu.cn/book/getBookById/' + data.bid,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method: 'get',
+      success(res) {
+       if(res.data.code=200){
+         that.setData({
+           bookInfo:res.data.data
+         })
+       }
+      }, fail() {
+        wx.showToast({
+          title: '服务器错误',
+          icon: 'none'
+        })
+      }
+    })
+
+    //获取用户信息
     wx.request({
       url: 'https://jihangyu.cn/user/getUser',
       data:{
