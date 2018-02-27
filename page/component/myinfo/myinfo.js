@@ -19,6 +19,8 @@ Page({
     })
   },
   submit(){
+    var userInfo=wx.getStorageSync("userInfo")
+    console.log(userInfo)
     var that=this
     var user_token = wx.getStorageSync("user_token")
     console.log(that.data.email)
@@ -29,7 +31,12 @@ Page({
       data:{
         uemail:that.data.email,
         uphone:that.data.phone,
-        uselfIntroduction: that.data.selfintroduction
+        uselfIntroduction: that.data.selfintroduction,
+        unickname: userInfo.nickName,
+        ucity: userInfo.city,
+        ugender: userInfo.gender==1?'男':'女',
+        uprovince: userInfo.province
+
       },
       header:{
         'content-type': 'application/json',
@@ -127,7 +134,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.onLoad(function () {
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**

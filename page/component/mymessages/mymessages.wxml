@@ -1,4 +1,3 @@
-
 <view class="top-tab flex-wrp flex-tab">
   <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
     {{itemName}}
@@ -7,33 +6,33 @@
 <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
     <view class="unread">
-      <text>0 条未读</text>
+      <text>{{unreadMessage}} 条未读</text>
       <image src="/image/messages/allread.png"></image>
     </view>
     <block wx:for="{{inBox}}" wx:key="{{index}}">
-    <view class="notify-item flex-wrp">
-      <view class="avatar flex-item">
-        <image src="{{item.bookimg}}"></image>
+      <navigator url='/page/component/mymessages/handleRequest/handleRequest?id={{item.message.bid+";"+item.message.fromUid+";"+item.message.toUid+";"+item.mId}}'><view class="notify-item flex-wrp"  >
+        <view class="avatar flex-item">
+          <image src="{{item.bookimg}}"></image>
+        </view>
+        <view class="notify-content flex-item">
+          <text class="notify-source">来自 {{item.fromUcity}} 的 {{item.fromUnickbname}} 看中了你的《{{item.bookname}}》</text>
+          <text class="notify-title">{{item.message.letter}}</text>
+        </view>
       </view>
-      <view class="notify-content flex-item"> 
-        <text class="notify-source">来自 {{item.fromUcity}} 的 {{item.fromUnickbname}} 看中了你的《{{item.bookname}}》</text>
-        <text class="notify-title">{{item.message.letter}}</text>
-      </view>
-    </view>
+      </navigator>
     </block>
-    </view>
-<block  wx:for="{{outBox}}" wx:key="{{index}}">
-  <view class="ctnt0" hidden="{{currentNavtab==1 ? '' : true}}">
-    <view class="notify-item flex-wrp">
-      <view class="avatar flex-item">
-        <image src="{{item.bookimg}}"></image>
-      </view>
-      <view class="notify-content flex-item">
-        <text class="notify-source">《{{item.bookname}}》 的主人 {{item.fromUnickbname}} 回复了你</text>
-        <text class="notify-title"></text>
-      </view>
-    </view>
   </view>
- </block>
+  <block wx:for="{{outBox}}" wx:key="{{index}}">
+    <view class="ctnt0" hidden="{{currentNavtab==1 ? '' : true}}">
+      <view class="notify-item flex-wrp">
+        <view class="avatar flex-item">
+          <image src="{{item.bookimg}}"></image>
+        </view>
+        <view class="notify-content flex-item">
+          <text class="notify-source">《{{item.bookname}}》 的主人 {{item.fromUnickbname}} 回复了你</text>
+          <text class="notify-title"></text>
+        </view>
+      </view>
+    </view>
+  </block>
 </scroll-view>
-

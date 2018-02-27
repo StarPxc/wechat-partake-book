@@ -1,0 +1,39 @@
+<!--page/component/myinfo/myinfo.wxml-->
+<view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
+
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_small-appmsg">
+      <view class="weui-cells weui-cells_in-small-appmsg">
+      
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='card-item-font'>昵称</view>
+            <view class='user_info'>{{info.uNickname}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='card-item-font'>性别</view>
+            <view class='user_info'>{{info.uGender}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='card-item-font'>手机</view>
+            <view class='user_info'>{{info.uPhone}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view class='card-item-font'>个人介绍</view>
+            <view class='user_info'>{{info.uSelfIntroduction}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='btn-area'>
+  <button bindtap='hadnle' class="weui-btn" id='2'>拒绝</button>
+  <button bindtap='hadnle' class="weui-btn" id='1'>同意</button>
+</view>
