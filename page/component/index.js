@@ -12,17 +12,17 @@ Page({
     newest: [],
     lastedList: [],
     hidden: true,
-    array: ['小说','社会', '财经', '科学', '哲学','幼儿','音乐','戏剧','名著','情感','其他'],
+    array: ['小说', '社会', '财经', '科学', '哲学', '幼儿', '音乐', '戏剧', '名著', '情感', '其他'],
     tempFilePaths: [],
     uoloadImg: "",
     tempFilePaths: [],
     index: 0,
-    bookname:'',
-    author:'',
-    price:'',
-    publisher:'',
-    barcode:'',
-    isbn:''
+    bookname: '',
+    author: '',
+    price: '',
+    publisher: '',
+    barcode: '',
+    isbn: ''
   },
   booknameinput(e) {
     this.setData({
@@ -54,7 +54,7 @@ Page({
       isbn: e.detail.value
     })
   },
-  onPullDownRefresh(){
+  onPullDownRefresh() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     // complete
     var that = this
@@ -71,11 +71,11 @@ Page({
           that.setData({
             lastedList: lastedList
           })
-      
+
           wx.hideNavigationBarLoading() //完成停止加载
           wx.stopPullDownRefresh() //停止下拉刷新
         } else {
-       
+
           wx.showToast({
             title: res.data.msg,
           })
@@ -84,11 +84,11 @@ Page({
         }
       }
     })
-    
+
   },
-  close(){
+  close() {
     this.setData({
-      hidden:true
+      hidden: true
     })
   },
   bindPickerChange(e) {
@@ -119,27 +119,30 @@ Page({
 
     var booktype = this.data.array[that.data.index]
     console.log(booktype)
-    if (that.data.bookname && that.data.author && that.data.price && that.data.publisher && booktype) {
-      wx.request({
-        url: 'https://jihangyu.cn/book/addBook',
-        header: {
-          'content-type': 'application/form-data', // 默认值
-          'user-token': user_token
-        },
-        data: {
-          bName:that.data.bookname,
-          bAuthor: that.data.author,
-          bPrice: that.data.price,
-          bPublisher: that.data.publisher,
-          bType: booktype
-        },
-        method: "POST",
-        success(res) {
-          if (res.data.code == 200) {
-            var bookId = res.data.data
-            if (that.data.tempFilePaths[0]) {
+    if (that.data.tempFilePaths[0]) {
+      if (that.data.bookname && that.data.author && that.data.price && that.data.publisher && booktype) {
+        wx.request({
+          url: 'https://jihangyu.cn/book/addBook',
+          header: {
+            'content-type': 'application/form-data', // 默认值
+            'user-token': user_token
+          },
+          data: {
+            bName: that.data.bookname,
+            bAuthor: that.data.author,
+            bPrice: that.data.price,
+            bPublisher: that.data.publisher,
+            bType: booktype
+          },
+          method: "POST",
+          success(res) {
+            if (res.data.code == 200) {
+
+
+              var bookId = res.data.data
+
               wx.uploadFile({
-                url: 'https://jihangyu.cn/book/upload', //仅为示例，非真实的接口地址
+                url: 'https://jihangyu.cn/book/upload',
                 filePath: that.data.tempFilePaths[0],
                 name: 'file',
                 formData: {
@@ -167,28 +170,31 @@ Page({
 
                 }
               })
+
+
             } else {
               wx.showToast({
-                title: '请上传封面',
+                title: res.data.msg,
               })
             }
 
-          } else {
-            wx.showToast({
-              title: res.data.msg,
-            })
+          },
+          fail: function (res) {
+            console.log(res);
           }
-
-        },
-        fail: function (res) {
-          console.log(res);
-        }
-      })
+        })
+      } else {
+        wx.showToast({
+          title: '带*标记为必填',
+        })
+      }
     } else {
       wx.showToast({
-        title: '带*标记为必填',
+        title: '请上传封面',
       })
     }
+
+    
 
 
 
