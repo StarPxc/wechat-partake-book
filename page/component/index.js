@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
   data: {
     imgUrls: [
@@ -161,7 +162,15 @@ Page({
                     that.setData({
                       hidden: true
                     })
-                  } else {
+                  } 
+                  if (res.data.code == 508) {
+                    app.login()
+                    wx.showToast({
+                      title: '正在重新登录',
+                      icon: "loading"
+                    })
+                  }
+                    else {
                     wx.showToast({
                       title: res.data.msg,
                     })

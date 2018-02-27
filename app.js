@@ -195,6 +195,8 @@ App({
           wx.getUserInfo({
             success: function (res) {
               var nickName = res.userInfo.nickName
+              var city = res.userInfo.city
+              wx.setStorageSync('userInfo', res.userInfo)
               //发起网络请求
               wx.request({
                 url: 'https://jihangyu.cn/user/login',
@@ -203,7 +205,8 @@ App({
                 },
                 data: {
                   code: code,
-                  nickName: nickName
+                  nickName: nickName,
+                  city:city
                 },
                 method: "POST",
                 success(res) {

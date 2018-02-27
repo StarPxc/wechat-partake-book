@@ -1,0 +1,47 @@
+.user-info {  
+   margin:10px 40% 10px 40%;
+}  
+
+.user_info{
+  text-align: right;
+  font-size: 30rpx;
+  color:#999;
+}
+
+.userinfo-avatar {  
+  width: 128rpx;  
+  height: 128rpx;  
+  margin:1px 7% 1px;
+  text-align: center;
+  border-radius: 50%;  
+ 
+}  
+.userinfo-username{
+  text-align: center;
+  font-size: 30rpx;
+}
+.card-item-font{
+  font-size: 30rpx;
+  float: left;
+}
+.btn-area{
+  width: 100%;
+  border: 1px solid red;
+  display: inline-flex;
+  flex-direction: row ;
+  justify-content:center;
+
+}
+.btn-area button{
+  
+display: inline-block;
+width: 200rpx;
+color: white;
+
+}
+.btn-area button:nth-child(1){
+  background-color: rgb(217, 83, 79);
+}
+.btn-area button:nth-child(2){
+  background-color: rgb(92, 184, 92);
+}

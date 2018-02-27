@@ -18,7 +18,8 @@
     "page/component/mybooks/mybooks",
     "page/component/mybooks/book/book",
     "page/activity/detail/children",
-    "page/component/mymessages/mymessages"
+    "page/component/mymessages/mymessages",
+    "page/component/mymessages/handleRequest/handleRequest"
 
   ],
   "window": {
