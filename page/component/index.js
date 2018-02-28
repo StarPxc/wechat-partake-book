@@ -225,10 +225,16 @@ Page({
       success(res) {
         if (res.data.code == 200) {
           var lastedList = res.data.data
-          for (var i = 0; i < lastedList.length; i++) {
-            lastedList[i].bImg = 'http://p4a0xyee4.bkt.clouddn.com/' + lastedList[i].bImg.split(",")[0]
-          }
+          
           console.log(lastedList)
+          for (var i = 0; i < lastedList.length; i++) {
+            // if(lastedList[i].bStatus=="1"){
+            //   console.log(lastedList[i])
+            //   lastedList.splice(i,1)
+             
+            // }
+             lastedList[i].bImg = 'http://p4a0xyee4.bkt.clouddn.com/' + lastedList[i].bImg.split(",")[0]
+          }
           that.setData({
             lastedList: lastedList
           })

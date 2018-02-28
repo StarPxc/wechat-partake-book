@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["拥有", "借阅"],
+    tabs: ["我的", "正在阅读"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,

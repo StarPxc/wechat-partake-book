@@ -140,7 +140,7 @@
 
   <view class="selected">
     <view class="select-title">
-      <text>幼儿精选</text>
+      <text>精选</text>
     </view>
     <view class="select-top">
     <block wx:for="{{adimgUrls_little}}" wx:key="{{index}}" >
